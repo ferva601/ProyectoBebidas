@@ -40,16 +40,28 @@ class MarcaController extends Controller
 
     public function edit($id)
     {
-        //
+       $marca = Marca::find($id);
+       $productores = Productor::all();
+        $paises = Pais::all();
+        $provincias = Provincia_Region::all();
+
+        return view('marca.edit')->with(compact('productores', 'paises', 'provincias', 'marca'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+         $marca = Marca::find($id);
+        $marca->fill($request->all());
+        $marca->save();
+
+        return redirect()->action('MarcaController@index');
     }
 
     public function destroy($id)
     {
-        //
+       $marca = Marca::find($id);
+        $marca->delete();
+
+        return redirect()->action('MarcaController@index');
     }
 }
