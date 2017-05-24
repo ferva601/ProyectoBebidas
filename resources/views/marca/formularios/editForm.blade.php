@@ -1,12 +1,13 @@
-{!! Form::open(['route'=>'marca.store','method'=>'POST']) !!}
+{!! Form::open(['route' => ['marca.update', $marca->id], 'method' => 'PUT']) !!}
+
 {!! Form::label ('nombre','Nombre') !!}
-{!! Form::text ('nombre',null,['class'=>'form-control','placeholder'=>'Ej. Polar', 'required']) !!}
+{!! Form::text ('nombre',$marca->nombre,['class'=>'form-control','placeholder'=>'Ej. Polar', 'required']) !!}
 
 {!! Form::label ('nombre_seo','Nombre Seo') !!}
-{!! Form::text ('nombre_seo',null,['class'=>'form-control','placeholder'=>'Ej. Polar Seo', 'required']) !!}
+{!! Form::text ('nombre_seo',$marca->nombre_seo,['class'=>'form-control','placeholder'=>'Ej. Polar Seo', 'required']) !!}
 
 {!! Form::label ('descripcion','Descripcion') !!}
-{!! Form::text ('descripcion',null,['class'=>'form-control','placeholder'=>'Ej. ', 'required']) !!}
+{!! Form::text ('descripcion',$marca->descripcion,['class'=>'form-control','placeholder'=>'Ej. ', 'required']) !!}
 
 {!! Form::label ('logo','Logo') !!}
 {!! Form::file ('logo',null,['class'=>'form-control','required']) !!}
@@ -41,6 +42,6 @@ Productor
 {!! Form::hidden ('creador_id','3') !!}
 {!! Form::hidden ('tipo_creador','Productor') !!}
 
-{!! Form::submit ('Agregar',['class'=>'btn btn.primary']) !!}
+{!! Form::submit ('Modificar',['class'=>'btn btn.primary']) !!}
 
 {!! Form::close() !!}
