@@ -8,8 +8,6 @@ use App\Models\Pais;
 use App\Models\Provincia_Region;
 
 
-
-
 class UsuarioController extends Controller
 {
     /**
@@ -19,8 +17,10 @@ class UsuarioController extends Controller
      */
     public function index()
     {
+
         $usuarios = User::paginate(1);
         return view('Usuario.index')->with(compact('usuarios'));
+
     }
 
     /**
@@ -30,9 +30,11 @@ class UsuarioController extends Controller
      */
     public function create()
     {
+
         $paises = Pais::all();
         $provincias = Provincia_Region::all();
         return view('usuario.create')->with(compact('paises', 'provincias'));
+
     }
 
     /**
@@ -43,9 +45,11 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
+
         $usuario = new User($request->all());
         $usuario->save();
         return redirect()->action('UsuarioController@index');
+
     }
 
     /**
@@ -56,7 +60,9 @@ class UsuarioController extends Controller
      */
     public function show($id)
     {
+
         return User::find($id);
+
     }
 
     /**
@@ -80,11 +86,13 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $usuario = User::find($id);
         $usuario->fill($request->all());
         $usuario->save();
 
         return redirect()->action('UsuarioController@index');
+
     }
 
     /**
@@ -95,11 +103,15 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
+
         $usuario = User::find($id);
         $usuario->delete();
 
         return redirect()->action('UsuarioController@index');
     }
+
 }
+
+
 
 
