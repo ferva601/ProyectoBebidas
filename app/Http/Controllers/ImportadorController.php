@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Productor;
+use App\Models\Importador;
+use App\Models\User;
 use App\Models\Pais;
+use App\Models\Provincia_Region;
 
-class ProductorController extends Controller
+class ImportadorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +17,8 @@ class ProductorController extends Controller
      */
     public function index()
     {
-        $productores = Productor::paginate(1);
-        return view('productor.index')->with(compact('productores'));
+        $importadores = Importador::paginate(1);
+        return view('importadores.index')->with(compact('importadores'));
     }
 
     /**
@@ -26,8 +28,11 @@ class ProductorController extends Controller
      */
     public function create()
     {
-        $paises = Pais::all();
-        return view('productor.create')->with(compact('paises'));
+        $usuario = User::all();
+        $pais = Pais::all();
+        $provincias = Provincia_Region::all();
+
+        return view('usuario.create')->with(compact('usuario','paises','provincias'));
     }
 
     /**
@@ -38,9 +43,9 @@ class ProductorController extends Controller
      */
     public function store(Request $request)
     {
-        $productor = new Productor($request->all());
-        $productor->save();
-        return redirect()->action('ProductorController@index');  
+        $importador = new Importador($request->all());
+        $importador->save();
+        return redirect()->action('ImportadorController@index');
     }
 
     /**
@@ -51,7 +56,7 @@ class ProductorController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -62,10 +67,12 @@ class ProductorController extends Controller
      */
     public function edit($id)
     {
-       $productor = Productor::find($id);
-       $paises = Pais::all();
+        $importador = Importador::find($id);
+        $usuario = User::all();
+        $paises = Pais::all();
+        $provincias = Provincia_Region::all();
 
-       return view('productor.edit')->with(compact('productor','pais'));
+       return view('importador.edit')->with(compact('importador','usuario', 'paises', 'provincias'));
     }
 
     /**
@@ -77,11 +84,11 @@ class ProductorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $productor = Productor::find($id);
-        $productor->fill($request->all());
-        $productor->save();
+        $importador = Importador::find($id);
+        $importador->fill($request->all());
+        $importador->save();
 
-        return redirect()->action('ProductorController@index');
+        return redirect()->action('ImportadorController@index');
     }
 
     /**
@@ -92,9 +99,9 @@ class ProductorController extends Controller
      */
     public function destroy($id)
     {
-        $productor = Productor::find($id);
-        $productor->delete();
+        $importador = Importador::find($id);
+        $importador->delete();
 
-        return redirect()->action('ProductorController@index');
+        return redirect()->action('ImportadorController@index');
     }
 }
