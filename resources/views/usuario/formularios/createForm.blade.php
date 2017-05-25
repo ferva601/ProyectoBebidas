@@ -29,7 +29,7 @@
 
 		<div class="form-group">
 			{!! Form::label('direccion', 'Dirección') !!}
-			{!! Form::textarea('direccion', null, ['class' => 'form-control', 'placeholder' => 'Dirección'] ) !!}
+			{!! Form::textarea('direccion', null, ['class' => 'form-control', 'placeholder' => 'Dirección', 'rows' => '5'] ) !!}
 		</div>
 
 		<div class="form-group">

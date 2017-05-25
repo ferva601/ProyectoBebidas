@@ -60,6 +60,16 @@
 	</div>
 
 	<div class="form-group">
+		{!! Form::label('telefono', 'Teléfono') !!}
+		{!! Form::text('telefono', $horeca->telefono, ['class' => 'form-control', 'placeholder' => 'Teléfono'] ) !!}
+	</div>
+
+	<div class="form-group">
+		{!! Form::label('telefono_opcional', 'Teléfono') !!}
+		{!! Form::text('telefono_opcional', $horeca->telefono_opcional, ['class' => 'form-control', 'placeholder' => 'Teléfono Opcional'] ) !!}
+	</div>
+
+	<div class="form-group">
 		{!! Form::label('email', 'Correo Electrónico') !!}
 		{!! Form::email('email', $horeca->email, ['class' => 'form-control'] ) !!}
 	</div>

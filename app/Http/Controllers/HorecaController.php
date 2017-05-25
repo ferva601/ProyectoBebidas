@@ -46,17 +46,10 @@ class HorecaController extends Controller
         $horeca = new Horeca($request->all());
         $horeca->save();
 
-        $telefono = new Telefono_Horeca();
+        /*$telefono = new Telefono_Horeca();
         $telefono->telefono = $request->telefono;
         $telefono->horeca()->associate($horeca);
-        $telefono->save();
-
-        if ( $request->telefono_opc != "" ){
-            $telefono_opc = new Telefono_Horeca();
-            $telefono_opc->telefono = $request->telefono_opc;
-            $telefono_opc->horeca()->associate($horeca);
-            $telefono_opc->save();
-        }
+        $telefono->save();*/
 
         return redirect()->action('HorecaController@index');
     }

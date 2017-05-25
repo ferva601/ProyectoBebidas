@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Horeca extends Model
 {
-     protected $table = "horeca";
+    protected $table = "horeca";
 
     protected $fillable = [
         'user_id', 'nombre', 'nombre_seo', 'descripcion', 'direccion', 'codigo_postal', 'pais_id', 'provincia_region_id', 'logo', 'persona_contacto',
-        'email', 'website', 'facebook', 'twitter', 'instagram', 'reclamada', 'latitud', 'longitud', 'estado_datos', 'tipo_horeca', 'saldo',
+        'email', 'website', 'facebook', 'twitter', 'instagram', 'reclamada', 'latitud', 'longitud', 'estado_datos', 'tipo_horeca', 'saldo', 'telefono',
+        'telefono_opcional'
     ];
 
     public function user(){
@@ -23,9 +24,5 @@ class Horeca extends Model
 
     public function provincia_region(){
     	return $this->belongsTo('App\Models\Provincia_Region');
-    }
-
-    public function telefonos(){
-    	return $this->hasMany('App\Models\Telefono_Horeca');
     }
 }
