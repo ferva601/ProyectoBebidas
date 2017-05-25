@@ -1,4 +1,5 @@
 {!! Form::open(['route' => 'usuario.store', 'method' => 'POST']) !!}
+
 		<div class="form-group">
 			{!! Form::label('name', 'Nombre de Usuario') !!}
 			{!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nombre de Usuario'] ) !!}
@@ -23,16 +24,18 @@
 			{!! Form::label('apellido', 'Apellido') !!}
 			{!! Form::text('apellido', null, ['class' => 'form-control', 'placeholder' => 'Apellido'] ) !!}
 		</div>
-		
+
 		<div class="form-group">
 			{!! Form::label('direccion', 'Dirección') !!}
-			{!! Form::textarea('direccion', ['class' => 'form-control', 'placeholder' => 'Dirección'] ) !!}
+			{!! Form::textarea('direccion', null, ['class' => 'form-control', 'placeholder' => 'Dirección'] ) !!}
 		</div>
 
 		<div class="form-group">
 			{!! Form::label('codigo_postal', 'Código Postal') !!}
-			{!! Form::text('codigo_postal', ['class' => 'form-control', 'placeholder' => 'Código Postal'] ) !!}
+			{!! Form::text('codigo_postal', null, ['class' => 'form-control', 'placeholder' => 'Código Postal'] ) !!}
 		</div>
+
+
 
 		<div class="form-group">
 			<select name="pais_id" class="form-control">
@@ -53,14 +56,6 @@
 		<div class="form-group">
 			{!! Form::label('avatar', 'Imagen / Avatar') !!}
 			{!! Form::file('avatar', ['class' => 'form-control', 'required'] ) !!}
-		</div>
-
-
-		<div class="form-group">
-			<select name="estado_datos" class="form-control">
-				<option value="Actualizados">Actualizados</option>
-				<option value="Sin Actualizar">Sin Actualizar</option>
-			</select>
 		</div>
 
 		<div class="form-group">
