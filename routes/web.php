@@ -24,3 +24,5 @@ Route::resource('usuario','UsuarioController');
 Route::resource('credito','CreditoController');
 
 Route::resource('bebida','BebidaController');
+
+Route::resource('horeca','HorecaController');

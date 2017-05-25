@@ -18,7 +18,6 @@
 	</section>
 
 	<footer>
-		@include('plantillas.partes.footer')
 	</footer>
 
 	{!! Html::script('bootstrap/js/bootstrap.js') !!}

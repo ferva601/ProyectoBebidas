@@ -1,9 +1,9 @@
 @extends('plantillas.main')
-@section('title', 'Crear Usuario')
+@section('title', 'Crear Horeca')
 @section('content')
 	<div class="col-md-4"></div>
 	<div class="col-md-4">
-		@include('usuario.formularios.createForm')
+		@include('horeca.formularios.createForm')
 	</div>
 	<div class="col-md-4"></div>
 	
