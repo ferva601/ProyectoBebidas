@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterUsuarioTable extends Migration
+class AlterProductorTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AlterUsuarioTable extends Migration
      */
     public function up()
     {
-        Schema::table('user', function (Blueprint $table){
+        Schema::table('productor', function (Blueprint $table){
             $table->string('telefono')->nullable();
             $table->string('telefono_opcional')->nullable();
         });

@@ -60,8 +60,8 @@
 	</div>
 
 	<div class="form-group">
-		{!! Form::label('telefono_opc', 'Teléfono') !!}
-		{!! Form::text('telefono_opc', null, ['class' => 'form-control', 'placeholder' => 'Teléfono Opcional'] ) !!}
+		{!! Form::label('telefono_opcional', 'Teléfono') !!}
+		{!! Form::text('telefono_opcional', null, ['class' => 'form-control', 'placeholder' => 'Teléfono Opcional'] ) !!}
 	</div>
 
 	<div class="form-group">

@@ -60,14 +60,12 @@
 	
 	<div class="form-group">
 		{!! Form::label('telefono', 'Teléfono') !!}
-		{!! Form::text('telefono', $telefonos[0]->telefono, ['class' => 'form-control'] ) !!}
-		{!! Form::hidden('telefono_id', $telefonos[0]->id) !!}
+		{!! Form::text('telefono', $productor->telefono, ['class' => 'form-control'] ) !!}
 	</div>
 
 	<div class="form-group">
-		{!! Form::label('telefono_opc', 'Teléfono Opcional') !!}
-		{!! Form::text('telefono_opc', $telefonos[1]->telefono, ['class' => 'form-control'] ) !!}
-		{!! Form::hidden('telefono_opc_id', $telefonos[1]->id) !!}
+		{!! Form::label('telefono_opcional', 'Teléfono Opcional') !!}
+		{!! Form::text('telefono_opcional', $productor->telefono_opcional, ['class' => 'form-control'] ) !!}
 	</div>
 
 	<div class="form-group">

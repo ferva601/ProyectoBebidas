@@ -37,17 +37,6 @@ class ProductorController extends Controller
         $productor = new Productor($request->all());
         $productor->save();
 
-        $telefono = new Telefono_Productor();
-        $telefono->telefono = $request->telefono;
-        $telefono->productor()->associate($productor);
-        $telefono->save();
-
-        if ( $request->telefono_opc != "" ){
-            $telefono_opc = new Telefono_Productor();
-            $telefono_opc->telefono = $request->telefono_opc;
-            $telefono_opc->productor()->associate($productor);
-            $telefono_opc->save();
-        }
         return redirect()->action('ProductorController@index');  
     }
 
