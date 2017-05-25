@@ -13,14 +13,14 @@ class Destino_Oferta_Importador extends Model
     ]; 
 
     public function oferta_importador(){
-    	return $this->belongsTo('App\Oferta_Importador');
+    	return $this->belongsTo('App\Models\Oferta_Importador');
     }
 
     public function pais(){
-    	return $this->belongsTo('App\Pais');
+    	return $this->belongsTo('App\Models\Pais');
     }
 
     public function provincia_region(){
-    	return $this->belongsTo('App\Provincia_Region');
+    	return $this->belongsTo('App\Models\Provincia_Region');
     }
 }

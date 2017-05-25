@@ -1,26 +1,24 @@
 @extends('plantillas.main')
-@section('title', 'Usuarios')
+@section('title', 'Productores')
 @section('content')
 	<table class='table table-condensed table-hover'>
 		<thead>
-			<th>Username</th>
 			<th>Nombre</th>
-			<th>Apellido</th>
 			<th>Dirección</th>
-			<th>Código Postal</th>
+			<th>Descripción</th>
+			<th>Email</th>
 			<th>Acciones</th>
 		</thead>
 		<tbody>
-			@foreach ($usuarios as $usuario)
+			@foreach ($productores as $productor)
 				<tr>
-					<td>{{ $usuario->name }}</td>
-					<td>{{ $usuario->nombre }}</td>
-					<td>{{ $usuario->apellido }}</td>
-					<td>{{ $usuario->direccion }}</td>
-					<td>{{ $usuario->codigo_postal }}</td>
-					<td> <a class="btn btn-primary" href="{{ route('usuario.edit', $usuario->id ) }}">Modificar</a></td>
+					<td>{{ $productor->nombre }}</td>
+					<td>{{ $productor->direccion }}</td>
+					<td>{{ $productor->descripcion }}</td>
+					<td>{{ $productor->email }}</td>
+					<td> <a class="btn btn-primary" href="{{ route('productor.edit', $productor->id ) }}">Modificar</a></td>
 					<td> 
-						{!! Form::open(['route' => ['usuario.destroy', $usuario->id], 'method' => 'DELETE']) !!}
+						{!! Form::open(['route' => ['productor.destroy', $productor->id], 'method' => 'DELETE']) !!}
 							{!! Form::submit('Eliminar', ['class' => 'btn btn-danger']) !!}
 						{!! Form::close() !!}
 					</td>
@@ -28,5 +26,5 @@
 			@endforeach
 		</tbody>
 	</table>
-	{!! $usuarios->render() !!}
+	{!! $productores->render() !!}
 @endsection

@@ -12,7 +12,8 @@ class User extends Authenticatable
     protected $table = "user";
 
     protected $fillable = [
-        'name', 'email', 'password', 'nombre', 'apellido', 'direccion', 'codigo_postal', 'pais_id', 'provincia_region_id', 'avatar', 'estado_datos',
+        'name', 'email', 'password', 'nombre', 'apellido', 'direccion', 'codigo_postal', 'pais_id', 'provincia_region_id', 'avatar', 
+        'estado_datos', 'telefono', 'telefono_opcional',
     ];
 
     protected $hidden = [
@@ -20,34 +21,30 @@ class User extends Authenticatable
     ];
 
     public function pais(){
-    	return $this->belongsTo('App\Pais');
+    	return $this->belongsTo('App\Models\Pais');
     }
 
     public function provincia_region(){
-    	return $this->belongsTo('App\Provincia_Region');
-    }
-
-    public function telefonos(){
-        return $this->hasMany('App\Telefono_Usuario.php');
+    	return $this->belongsTo('App\Models\Provincia_Region');
     }
 
     public function productores(){
-        return $this->hasMany('App\Productor');
+        return $this->hasMany('App\Models\Productor');
     }
 
     public function importadores(){
-    	return $this->hasMany('App\Importador');
+    	return $this->hasMany('App\Models\Importador');
     }
 
     public function distribuidores(){
-    	return $this->hasMany('App\Distribuidor');
+    	return $this->hasMany('App\Models\Distribuidor');
     }
 
     public function horecas(){
-    	return $this->hasMany('App\Horeca');
+    	return $this->hasMany('App\Models\Horeca');
     }
 
     public function opiniones(){
-    	return $this->hasMany('App\Opinion');
+    	return $this->hasMany('App\Models\Opinion');
     }
 }

@@ -13,7 +13,7 @@ class Factura_Oferta_Importador extends Model
     ]; 
 
     public function oferta_importador(){
-    	return $this->belongsTo('App\Oferta_Importador');
+    	return $this->belongsTo('App\Models\Oferta_Importador');
     }
 
 }

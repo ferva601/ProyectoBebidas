@@ -13,10 +13,10 @@ class Opinion extends Model
     ];
 
     public function user(){
-    	return $this->belongsTo('App\User');
+    	return $this->belongsTo('App\Models\User');
     }
 
     public function producto(){
-    	return $this->belongsTo('App\Producto');
+    	return $this->belongsTo('App\Models\Producto');
     }
 }

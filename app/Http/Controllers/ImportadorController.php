@@ -7,6 +7,7 @@ use App\Models\Importador;
 use App\Models\User;
 use App\Models\Pais;
 use App\Models\Provincia_Region;
+use DB;
 
 class ImportadorController extends Controller
 {
@@ -18,7 +19,7 @@ class ImportadorController extends Controller
     public function index()
     {
         $importadores = Importador::paginate(1);
-        return view('importadores.index')->with(compact('importadores'));
+        return view('importador.index')->with(compact('importadores'));
     }
 
     /**
@@ -27,12 +28,18 @@ class ImportadorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        $usuario = User::all();
-        $pais = Pais::all();
-        $provincias = Provincia_Region::all();
+    {   
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
 
-        return view('usuario.create')->with(compact('usuario','paises','provincias'));
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
+
+        return view('importador.create')->with(compact('paises','provincias'));
     }
 
     /**
@@ -68,11 +75,18 @@ class ImportadorController extends Controller
     public function edit($id)
     {
         $importador = Importador::find($id);
-        $usuario = User::all();
-        $paises = Pais::all();
-        $provincias = Provincia_Region::all();
 
-       return view('importador.edit')->with(compact('importador','usuario', 'paises', 'provincias'));
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
+
+       return view('importador.edit')->with(compact('importador', 'paises', 'provincias'));
     }
 
     /**

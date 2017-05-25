@@ -14,18 +14,18 @@ class Oferta_Importador extends Model
     ];
 
     public function producto(){
-    	return $this->belongsTo('App\Producto');
+    	return $this->belongsTo('App\Models\Producto');
     }
 
     public function importador(){
-    	return $this->belongsTo('App\Importador');
+    	return $this->belongsTo('App\Models\Importador');
     }
 
     public function destinos_ofertas_importadores(){
-    	return $this->hasMany('App\Destino_Oferta_Importador');
+    	return $this->hasMany('App\Models\Destino_Oferta_Importador');
     }
 
     public function facturas_ofertas_importadores(){
-    	return $this->hasMany('App\Factura_Oferta_Importador');
+    	return $this->hasMany('App\Models\Factura_Oferta_Importador');
     }
 }

@@ -6,7 +6,7 @@
 	{!! Form::hidden('pais_hidden', $horeca->pais_id, ['id' => 'pais_hidden']) !!}
 	{!! Form::hidden('provincia_hidden', $horeca->provincia_region_id, ['id' => 'provincia_hidden']) !!}
 	{!! Form::hidden('datos_hidden', $horeca->estado_datos, ['id' => 'datos_hidden']) !!}
-	{!! Form::text('tipo_hidden', $horeca->tipo_horeca, ['id' => 'tipo_hidden']) !!}
+	{!! Form::hidden('tipo_hidden', $horeca->tipo_horeca, ['id' => 'tipo_hidden']) !!}
 
 	<div class="form-group">
 		{!! Form::label('nombre', 'Nombre del Horeca') !!}
@@ -57,6 +57,16 @@
 	<div class="form-group">
 		{!! Form::label('persona_contacto', 'Persona de Contacto') !!}
 		{!! Form::text('persona_contacto', $horeca->persona_contacto, ['class' => 'form-control'] ) !!}
+	</div>
+
+	<div class="form-group">
+		{!! Form::label('telefono', 'Teléfono') !!}
+		{!! Form::text('telefono', $horeca->telefono, ['class' => 'form-control', 'placeholder' => 'Teléfono'] ) !!}
+	</div>
+
+	<div class="form-group">
+		{!! Form::label('telefono_opcional', 'Teléfono') !!}
+		{!! Form::text('telefono_opcional', $horeca->telefono_opcional, ['class' => 'form-control', 'placeholder' => 'Teléfono Opcional'] ) !!}
 	</div>
 
 	<div class="form-group">

@@ -13,14 +13,14 @@ class Credito extends Model
     ];
 
     public function productores(){
-    	return $this->belongsToMany('App\Productor', 'credito_productor')->withPivot('total', 'fecha_compra')->withTimestamps();
+    	return $this->belongsToMany('App\Models\Productor', 'credito_productor')->withPivot('total', 'fecha_compra')->withTimestamps();
     }
 
     public function importadores(){
-    	return $this->belongsToMany('App\Importador', 'credito_importador')->withPivot('total', 'fecha_compra')->withTimestamps();
+    	return $this->belongsToMany('App\Models\Importador', 'credito_importador')->withPivot('total', 'fecha_compra')->withTimestamps();
     }
 
     public function distribuidores(){
-    	return $this->belongsToMany('App\Distribuidor', 'credito_distribuidor')->withPivot('total', 'fecha_compra')->withTimestamps();
+    	return $this->belongsToMany('App\Models\Distribuidor', 'credito_distribuidor')->withPivot('total', 'fecha_compra')->withTimestamps();
     }
 }

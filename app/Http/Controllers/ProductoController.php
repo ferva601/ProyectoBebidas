@@ -8,6 +8,7 @@ use App\Models\Pais;
 use App\Models\Provincia_Region;
 use App\Models\Clase_Bebida;
 use App\Models\Marca;
+use DB;
 
 class ProductoController extends Controller
 {
@@ -20,10 +21,25 @@ class ProductoController extends Controller
 
     public function create()
     {
-        $paises = Pais::all();
-        $provincias = Provincia_Region::all();
-        $bebidas = Clase_Bebida::all();
-        $marcas = Marca::all();
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
+
+        $bebidas = DB::table('clase_bebida')
+                        ->orderBy('clase')
+                        ->select('id', 'clase')
+                        ->get();
+
+        $marcas = DB::table('marca')
+                        ->orderBy('nombre')
+                        ->select('id', 'nombre')
+                        ->get();
 
         return view('producto.create')->with(compact('paises','provincias', 'bebidas', 'marcas'));
     }

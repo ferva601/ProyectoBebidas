@@ -21,8 +21,8 @@ class UsuarioController extends Controller
     public function create()
     {   
 
-       $paises = Pais::all();
-       $provincias = Provincia_Region::all();
+        $paises = Pais::all();
+        $provincias = Provincia_Region::all();
 
         return view('usuario.create')->with(compact('paises','provincias'));
     }

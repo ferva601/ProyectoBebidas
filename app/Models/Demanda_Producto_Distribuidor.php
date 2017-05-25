@@ -14,18 +14,18 @@ class Demanda_Producto_Distribuidor extends Model
     ]; 
 
     public function producto(){
-    	return $this->belongsTo('App\Producto');
+    	return $this->belongsTo('App\Models\Producto');
     }
 
     public function distribuidor(){
-    	return $this->belongsTo('App\Distribuidor');
+    	return $this->belongsTo('App\Models\Distribuidor');
     }
 
     public function pais(){
-    	return $this->belongsTo('App\Pais');
+    	return $this->belongsTo('App\Models\Pais');
     }
 
     public function provincia_region(){
-    	return $this->belongsTo('App\Provincia_Region');
+    	return $this->belongsTo('App\Models\Provincia_Region');
     }
 }

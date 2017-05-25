@@ -13,6 +13,6 @@ class Deduccion_Credito_Importador extends Model
     ];
 
     public function importador(){
-    	return $this->belongsTo('App\Importador');
+    	return $this->belongsTo('App\Models\Importador');
     }
 }

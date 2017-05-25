@@ -14,19 +14,19 @@ class Demanda_Producto_Importador extends Model
     ]; 
 
     public function producto(){
-    	return $this->belongsTo('App\Producto');
+    	return $this->belongsTo('App\Models\Producto');
     }
 
     public function importador(){
-    	return $this->belongsTo('App\Importador');
+    	return $this->belongsTo('App\Models\Importador');
     }
 
     public function pais(){
-    	return $this->belongsTo('App\Pais');
+    	return $this->belongsTo('App\Models\Pais');
     }
 
     public function provincia_region(){
-    	return $this->belongsTo('App\Provincia_Region');
+    	return $this->belongsTo('App\Models\Provincia_Region');
     }
 
 }

@@ -13,7 +13,7 @@ class Factura_Oferta_Productor extends Model
     ]; 
 
     public function oferta_productor(){
-    	return $this->belongsTo('App\Oferta_Productor');
+    	return $this->belongsTo('App\Models\Oferta_Productor');
     }
 
 }

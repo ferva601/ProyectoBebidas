@@ -58,6 +58,16 @@
 		</div>
 
 		<div class="form-group">
+			{!! Form::label('telefono', 'Teléfono') !!}
+			{!! Form::text('telefono', $usuario->telefono, ['class' => 'form-control'] ) !!}
+		</div>
+
+		<div class="form-group">
+			{!! Form::label('telefono_opcional', 'Teléfono') !!}
+			{!! Form::text('telefono_opcional', $usuario->telefono_opcional, ['class' => 'form-control'] ) !!}
+		</div>
+
+		<div class="form-group">
 			{!! Form::label('avatar', 'Imagen / Avatar') !!}
 			{!! Form::file('avatar', ['class' => 'form-control', 'required'] ) !!}
 		</div>

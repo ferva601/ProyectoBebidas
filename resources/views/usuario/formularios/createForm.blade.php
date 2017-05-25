@@ -29,7 +29,7 @@
 
 		<div class="form-group">
 			{!! Form::label('direccion', 'Dirección') !!}
-			{!! Form::textarea('direccion', null, ['class' => 'form-control', 'placeholder' => 'Dirección'] ) !!}
+			{!! Form::textarea('direccion', null, ['class' => 'form-control', 'placeholder' => 'Dirección', 'rows' => '5'] ) !!}
 		</div>
 
 		<div class="form-group">
@@ -61,9 +61,21 @@
 		</div>
 
 		<div class="form-group">
+			{!! Form::label('telefono', 'Teléfono') !!}
+			{!! Form::text('telefono', null, ['class' => 'form-control', 'placeholder' => 'Teléfono'] ) !!}
+		</div>
+
+		<div class="form-group">
+			{!! Form::label('telefono_opcional', 'Teléfono') !!}
+			{!! Form::text('telefono_opcional', null, ['class' => 'form-control', 'placeholder' => 'Teléfono Opcional'] ) !!}
+		</div>
+
+		<div class="form-group">
 			{!! Form::label('avatar', 'Imagen / Avatar') !!}
 			{!! Form::file('avatar', ['class' => 'form-control', 'required'] ) !!}
 		</div>
+
+
 
 		<div class="form-group">
 			{!! Form::submit('Agregar Usuario', ['class' => 'btn btn-primary']) !!}

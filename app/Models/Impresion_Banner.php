@@ -13,10 +13,10 @@ class Impresion_Banner extends Model
     ];
 
     public function banner(){
-    	return $this->belongsTo('App\Banner');
+    	return $this->belongsTo('App\Models\Banner');
     }
 
     public function pais(){
-    	return $this->belongsTo('App\Pais');
+    	return $this->belongsTo('App\Models\Pais');
     }
 }
