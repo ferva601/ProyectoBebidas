@@ -1,13 +1,13 @@
 @extends('plantillas.main')
 @section('title', 'Listar-marcas')
 @section('content')
-<div class="col-md-3"></div>
-<table>
+<table class='table table-condensed table-hover'>
 	<thead>
 		<th>Id</th>
 		<th>Nombre</th>
-		<th>Tipo</th>
 		<th>Descripcion</th>
+		<th>Reclamada</th>
+		<th>Acciones</th>
 	</thead>
 
 	<tbody>

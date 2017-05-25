@@ -9,27 +9,19 @@ use App\Models\Credito;
 
 class CreditoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $creditos=Credito::paginate(1);
         return view ('credito.index')->with (compact('creditos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
       return view ('credito.create');
     }
 
+<<<<<<< HEAD
     /**
      * Store a newly created resource in storage.
      *
@@ -37,29 +29,20 @@ class CreditoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(CreditoCreateRequest $request)
+=======
+    public function store(Request $request)
+>>>>>>> 480a7bbce31a0aa15df85493177ad346ffc477df
     {
         $credito=new Credito($request->all());
         $credito->save();
         return redirect()->action('CreditoController@index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $credito = Credito::find($id);
@@ -67,6 +50,7 @@ class CreditoController extends Controller
         return view('credito.edit')->with(compact('credito'));
     }
 
+<<<<<<< HEAD
     /**
      * Update the specified resource in storage.
      *
@@ -75,6 +59,9 @@ class CreditoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(CreditoUpdateRequest $request, $id)
+=======
+    public function update(Request $request, $id)
+>>>>>>> 480a7bbce31a0aa15df85493177ad346ffc477df
     {
          $credito = Credito::find($id);
         $credito->fill($request->all());
@@ -82,13 +69,7 @@ class CreditoController extends Controller
 
         return redirect()->action('CreditoController@index');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy($id)
     {
          $credito = Credito::find($id);

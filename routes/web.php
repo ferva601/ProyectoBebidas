@@ -22,3 +22,5 @@ Route::resource('marca','MarcaController');
 Route::resource('usuario','UsuarioController');
 
 Route::resource('credito','CreditoController');
+
+Route::resource('bebida','BebidaController');
