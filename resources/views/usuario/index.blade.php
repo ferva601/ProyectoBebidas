@@ -16,6 +16,8 @@
 					<td>{{ $usuario->name }}</td>
 					<td>{{ $usuario->nombre }}</td>
 					<td>{{ $usuario->apellido }}</td>
+					<td>{{ $usuario->direccion }}</td>
+					<td>{{ $usuario->codigo_postal }}</td>
 					<td> <a class="btn btn-primary" href="{{ route('usuario.edit', $usuario->id ) }}">Modificar</a></td>
 					<td> 
 						{!! Form::open(['route' => ['usuario.destroy', $usuario->id], 'method' => 'DELETE']) !!}

@@ -14,7 +14,7 @@
 
 		<div class="form-group">
 			{!! Form::label('password', 'Contraseña') !!}
-			{!! Form::text('password', null, ['class' => 'form-control', 'placeholder' => 'Contraseña'] ) !!}
+			{!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Contraseña'] ) !!}
 		</div>
 
 		<div class="form-group">
@@ -36,9 +36,7 @@
 			{!! Form::label('codigo_postal', 'Código Postal') !!}
 			{!! Form::text('codigo_postal', null, ['class' => 'form-control', 'placeholder' => 'Código Postal'] ) !!}
 		</div>
-
-
-
+		
 		<div class="form-group">
 			<select name="pais_id" class="form-control">
 				@foreach ($paises as $pais )
@@ -52,6 +50,13 @@
 				@foreach ($provincias as $provincia )
 					<option value="{{ $provincia->id }}">{{ $provincia->provincia }}</option>
 				@endforeach
+			</select>
+		</div>
+
+		<div class="form-group">
+			<select name="estado_datos" class="form-control">
+				<option value="Actualizados">Actualizados</option>
+				<option value="Sin Actualizar">Sin Actualizar</option>
 			</select>
 		</div>
 

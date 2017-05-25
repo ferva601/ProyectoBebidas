@@ -118,7 +118,7 @@
 	</div>
 
 	<div class="form-group">
-		{!! Form::submit('Agregar Usuario', ['class' => 'btn btn-primary']) !!}
+		{!! Form::submit('Modificar Horeca', ['class' => 'btn btn-primary']) !!}
 	</div>
 		
 {!! Form::close() !!}

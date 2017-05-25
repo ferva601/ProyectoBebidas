@@ -64,7 +64,7 @@
 			</div>
 
 			<div class="form-group">
-				{!! Form::submit('Registrar', ['class' => 'btn btn-primary']) !!}
+				{!! Form::submit('Modificar Producto', ['class' => 'btn btn-primary']) !!}
 			</div>
 		
 		{!! Form::close() !!}

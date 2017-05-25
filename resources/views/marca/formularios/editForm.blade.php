@@ -62,6 +62,6 @@
 		</select>
 	</div>
 
-	{!! Form::submit ('Modificar',['class'=>'btn btn-primary']) !!}
+	{!! Form::submit ('Modificar Marca',['class'=>'btn btn-primary']) !!}
 
 {!! Form::close() !!}

@@ -34,7 +34,6 @@ class UsuarioController extends Controller
         $paises = Pais::all();
         $provincias = Provincia_Region::all();
         return view('usuario.create')->with(compact('paises', 'provincias'));
-
     }
 
     /**
@@ -73,8 +72,10 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
+
         $usuario = User::find($id);
         return view('usuario.edit', ['User'=>$usuario]);
+
     }
 
     /**
@@ -109,9 +110,6 @@ class UsuarioController extends Controller
 
         return redirect()->action('UsuarioController@index');
     }
-
 }
-
-
 
 
