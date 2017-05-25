@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Distribuidor;
 use App\Models\Pais;
 use App\Models\Provincia_Region;
+use DB;
 
 class DistribuidorController extends Controller
 {
@@ -16,8 +17,8 @@ class DistribuidorController extends Controller
      */
     public function index()
     {
-        $distribuidor = Distribuidor::paginate(1);
-        return view('distribuidores.index')->with(compact('distribuidor'));
+        $distribuidores = Distribuidor::paginate(1);
+        return view('distribuidor.index')->with(compact('distribuidores'));
     }
 
     /**
@@ -27,8 +28,15 @@ class DistribuidorController extends Controller
      */
     public function create()
     {
-        $paises = Pais::all();
-        $provincias = Provincia_Region::all();
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
 
         return view('distribuidor.create')->with(compact('paises','provincias'));
      }
@@ -66,11 +74,18 @@ class DistribuidorController extends Controller
     public function edit($id)
     {
         $distribuidor = Distribuidor::find($id);
-        $paises = Pais::all();
-        $provincias = Provincia_Region::all();
+
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
 
        return view('distribuidor.edit')->with(compact('distribuidor', 'paises', 'provincias')); 
-
     }
 
     /**
