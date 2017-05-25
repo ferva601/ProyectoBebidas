@@ -7,48 +7,31 @@ use App\Models\User;
 use App\Models\Pais;
 use App\Models\Provincia_Region;
 
-
 class UsuarioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
 
         $usuarios = User::paginate(1);
-        return view('Usuario.index')->with(compact('usuarios'));
+        return view('usuario.index')->with(compact('usuarios'));
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
-    {
+    {   
 
-        $paises = Pais::all();
-        $provincias = Provincia_Region::all();
-        return view('usuario.create')->with(compact('paises', 'provincias'));
+       $paises = Pais::all();
+       $provincias = Provincia_Region::all();
+
+        return view('usuario.create')->with(compact('paises','provincias'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-
         $usuario = new User($request->all());
         $usuario->save();
         return redirect()->action('UsuarioController@index');
-
     }
 
     /**
@@ -60,8 +43,6 @@ class UsuarioController extends Controller
     public function show($id)
     {
 
-        return User::find($id);
-
     }
 
     /**
@@ -72,10 +53,12 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
+       
+       $usuario = User::find($id);
+       $paises = Pais::all();
+       $provincias = Provincia_Region::all();
 
-        $usuario = User::find($id);
-        return view('usuario.edit', ['User'=>$usuario]);
-
+       return view('usuario.edit')->with(compact('usuario', 'paises', 'provincias'));
     }
 
     /**
@@ -87,13 +70,13 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        
         $usuario = User::find($id);
         $usuario->fill($request->all());
         $usuario->save();
 
         return redirect()->action('UsuarioController@index');
-
+        
     }
 
     /**
@@ -104,12 +87,10 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-
         $usuario = User::find($id);
         $usuario->delete();
 
         return redirect()->action('UsuarioController@index');
+
     }
 }
-
-

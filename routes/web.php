@@ -16,17 +16,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('producto', 'ProductoController');
+Route::resource('productor','ProductorController');
+
+Route::resource('producto','ProductoController');
 
 Route::resource('marca','MarcaController');
 
 Route::resource('usuario','UsuarioController');
 
-Route::resource('productor','ProductorController');
 
 Route::resource('credito','CreditoController');
 
 Route::resource('bebida','BebidaController');
 
 Route::resource('horeca','HorecaController');
+
+Route::resource('importador','ImportadorController');
+
+Route::resource('distribuidor','DistribuidorController');
+
 
