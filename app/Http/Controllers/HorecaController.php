@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Horeca;
 use App\Models\Pais;
 use App\Models\Provincia_Region;
 
 
-
-
-class UsuarioController extends Controller
+class HorecaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +17,8 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $usuarios = User::paginate(1);
-        return view('Usuario.index')->with(compact('usuarios'));
+        $horecas = Horeca::paginate(1);
+        return view('horeca.index')->with(compact('horecas'));
     }
 
     /**
@@ -32,7 +30,8 @@ class UsuarioController extends Controller
     {
         $paises = Pais::all();
         $provincias = Provincia_Region::all();
-        return view('usuario.create')->with(compact('paises', 'provincias'));
+
+        return view('horeca.create')->with(compact('paises', 'provincias'));
     }
 
     /**
@@ -43,9 +42,12 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        $usuario = new User($request->all());
-        $usuario->save();
-        return redirect()->action('UsuarioController@index');
+        $horeca = new Horeca($request->all());
+        $horeca->save();
+
+        
+
+        return redirect()->action('HorecaController@index');
     }
 
     /**
@@ -56,7 +58,7 @@ class UsuarioController extends Controller
      */
     public function show($id)
     {
-        return User::find($id);
+        //
     }
 
     /**
@@ -67,8 +69,12 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-        $usuario = User::find($id);
-        return view('usuario.edit', ['User'=>$usuario]);
+        $paises = Pais::all();
+        $provincias = Provincia_Region::all();
+
+        $horeca = Horeca::find($id);
+
+        return view('horeca.edit')->with(compact('horeca', 'paises', 'provincias'));
     }
 
     /**
@@ -80,11 +86,11 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $usuario = User::find($id);
-        $usuario->fill($request->all());
-        $usuario->save();
+        $horeca = Horeca::find($id);
+        $horeca->fill($request->all());
+        $horeca->save();
 
-        return redirect()->action('UsuarioController@index');
+        return redirect()->action('HorecaController@index');
     }
 
     /**
@@ -95,11 +101,9 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        $usuario = User::find($id);
-        $usuario->delete();
+        $horeca = Horeca::find($id);
+        $horeca->delete();
 
-        return redirect()->action('UsuarioController@index');
+        return redirect()->action('HorecaController@index');
     }
 }
-
-

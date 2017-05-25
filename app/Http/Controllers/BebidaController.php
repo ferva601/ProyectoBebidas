@@ -3,14 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Pais;
-use App\Models\Provincia_Region;
+use App\Models\Bebida;
 
-
-
-
-class UsuarioController extends Controller
+class BebidaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +14,8 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $usuarios = User::paginate(1);
-        return view('Usuario.index')->with(compact('usuarios'));
+       $bebidas=Bebida::paginate(1);
+        return view ('bebida.index')->with (compact('bebidas'));
     }
 
     /**
@@ -30,9 +25,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        $paises = Pais::all();
-        $provincias = Provincia_Region::all();
-        return view('usuario.create')->with(compact('paises', 'provincias'));
+         return view ('bebida.create');
     }
 
     /**
@@ -43,9 +36,9 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        $usuario = new User($request->all());
-        $usuario->save();
-        return redirect()->action('UsuarioController@index');
+         $bebida=new Bebida($request->all());
+        $bebida->save();
+        return redirect()->action('BebidaController@index');
     }
 
     /**
@@ -56,7 +49,7 @@ class UsuarioController extends Controller
      */
     public function show($id)
     {
-        return User::find($id);
+        //
     }
 
     /**
@@ -67,8 +60,9 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-        $usuario = User::find($id);
-        return view('usuario.edit', ['User'=>$usuario]);
+        $bebida = Bebida::find($id);
+
+        return view('bebida.edit')->with(compact('bebida'));
     }
 
     /**
@@ -80,11 +74,11 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $usuario = User::find($id);
-        $usuario->fill($request->all());
-        $usuario->save();
+        $bebida = Bebida::find($id);
+        $bebida->fill($request->all());
+        $bebida->save();
 
-        return redirect()->action('UsuarioController@index');
+        return redirect()->action('BebidaController@index');
     }
 
     /**
@@ -95,11 +89,9 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        $usuario = User::find($id);
-        $usuario->delete();
+        $bebida = Bebida::find($id);
+        $bebida->delete();
 
-        return redirect()->action('UsuarioController@index');
+        return redirect()->action('BebidaController@index');
     }
 }
-
-

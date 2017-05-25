@@ -28,12 +28,12 @@
 		
 		<div class="form-group">
 			{!! Form::label('direccion', 'Dirección') !!}
-			{!! Form::textarea('direccion', ['class' => 'form-control', 'placeholder' => 'Dirección'] ) !!}
+			{!! Form::textarea('direccion', null, ['class' => 'form-control', 'placeholder' => 'Dirección'] ) !!}
 		</div>
 
 		<div class="form-group">
 			{!! Form::label('codigo_postal', 'Código Postal') !!}
-			{!! Form::text('codigo_postal', ['class' => 'form-control', 'placeholder' => 'Código Postal'] ) !!}
+			{!! Form::text('codigo_postal', null, ['class' => 'form-control', 'placeholder' => 'Código Postal'] ) !!}
 		</div>
 
 		<div class="form-group">
