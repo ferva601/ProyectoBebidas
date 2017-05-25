@@ -52,5 +52,4 @@ $(document).ready(function() {
           selectTipoHoreca[i].selected = true;
         }
     } 
-    alert(valorTipoHoreca);
 });

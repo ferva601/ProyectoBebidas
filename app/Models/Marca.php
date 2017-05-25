@@ -14,26 +14,26 @@ class Marca extends Model
     ];
 
     public function productor(){
-    	return $this->belongsTo('App\Productor');
+    	return $this->belongsTo('App\Models\Productor');
     }
 
     public function pais(){
-    	return $this->belongsTo('App\Pais');
+    	return $this->belongsTo('App\Models\Pais');
     }
 
     public function provincia_region(){
-    	return $this->belongsTo('App\Provincia_Region');
+    	return $this->belongsTo('App\Models\Provincia_Region');
     }
 
     public function importadores(){
-        return $this->belongsToMany('App\Importador', 'Importador_Marca');
+        return $this->belongsToMany('App\Models\Importador', 'Importador_Marca');
     }
 
     public function distribuidores(){
-        return $this->belongsToMany('App\Distribuidor', 'Distribuidor_Marca');
+        return $this->belongsToMany('App\Models\Distribuidor', 'Distribuidor_Marca');
     }
 
      public function productos(){
-        return $this->hasMany('App\Producto');
+        return $this->hasMany('App\Models\Producto');
     }
 }

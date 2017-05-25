@@ -13,6 +13,6 @@ class Factura_Oferta_Distribuidor extends Model
     ]; 
 
     public function oferta_distribuidor(){
-    	return $this->belongsTo('App\Oferta_Distribuidor');
+    	return $this->belongsTo('App\Models\Oferta_Distribuidor');
     }
 }

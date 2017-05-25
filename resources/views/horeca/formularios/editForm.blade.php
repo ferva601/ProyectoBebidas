@@ -6,7 +6,7 @@
 	{!! Form::hidden('pais_hidden', $horeca->pais_id, ['id' => 'pais_hidden']) !!}
 	{!! Form::hidden('provincia_hidden', $horeca->provincia_region_id, ['id' => 'provincia_hidden']) !!}
 	{!! Form::hidden('datos_hidden', $horeca->estado_datos, ['id' => 'datos_hidden']) !!}
-	{!! Form::text('tipo_hidden', $horeca->tipo_horeca, ['id' => 'tipo_hidden']) !!}
+	{!! Form::hidden('tipo_hidden', $horeca->tipo_horeca, ['id' => 'tipo_hidden']) !!}
 
 	<div class="form-group">
 		{!! Form::label('nombre', 'Nombre del Horeca') !!}

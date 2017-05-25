@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Horeca;
 use App\Models\Pais;
 use App\Models\Provincia_Region;
+use App\Models\Telefono_Horeca;
 
 
 class HorecaController extends Controller
@@ -45,7 +46,17 @@ class HorecaController extends Controller
         $horeca = new Horeca($request->all());
         $horeca->save();
 
-        
+        $telefono = new Telefono_Horeca();
+        $telefono->telefono = $request->telefono;
+        $telefono->horeca()->associate($horeca);
+        $telefono->save();
+
+        if ( $request->telefono_opc != "" ){
+            $telefono_opc = new Telefono_Horeca();
+            $telefono_opc->telefono = $request->telefono_opc;
+            $telefono_opc->horeca()->associate($horeca);
+            $telefono_opc->save();
+        }
 
         return redirect()->action('HorecaController@index');
     }

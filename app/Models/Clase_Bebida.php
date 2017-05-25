@@ -13,14 +13,14 @@ class Clase_Bebida extends Model
     ]; 
 
     public function bebida(){
-    	return $this->hasMany('App\Bebida');
+    	return $this->hasMany('App\Models\Bebida');
     }
 
     public function pais(){
-    	return $this->belongsTo('App\Pais');
+    	return $this->belongsTo('App\Models\Pais');
     }
 
      public function productos(){
-        return $this->hasMany('App\Producto');
+        return $this->hasMany('App\Models\Producto');
     }
 }

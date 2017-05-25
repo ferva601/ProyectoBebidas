@@ -14,18 +14,18 @@ class Oferta_Productor extends Model
     ];
 
     public function producto(){
-    	return $this->belongsTo('App\Producto');
+    	return $this->belongsTo('App\Models\Producto');
     }
 
     public function productor(){
-    	return $this->belongsTo('App\Productor');
+    	return $this->belongsTo('App\Models\Productor');
     }
 
     public function destinos_ofertas_productores(){
-    	return $this->hasMany('App\Destino_Oferta_Productor');
+    	return $this->hasMany('App\Models\Destino_Oferta_Productor');
     }
 
     public function facturas_ofertas_productores(){
-    	return $this->hasMany('App\Factura_Oferta_Productor');
+    	return $this->hasMany('App\Models\Factura_Oferta_Productor');
     }
 }

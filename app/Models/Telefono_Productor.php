@@ -13,6 +13,6 @@ class Telefono_Productor extends Model
     ]; 
 
     public function productor(){
-    	return $this->belongsTo('App\Productor');
+    	return $this->belongsTo('App\Models\Productor');
     }
 }

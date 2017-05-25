@@ -14,46 +14,46 @@ class Importador extends Model
     ];
 
     public function user(){
-    	return $this->belongsTo('App\User');
+    	return $this->belongsTo('App\Models\User');
     }
 
     public function pais(){
-    	return $this->belongsTo('App\Pais');
+    	return $this->belongsTo('App\Models\Pais');
     }
 
     public function provincia_region(){
-    	return $this->belongsTo('App\Provincia_Region');
+    	return $this->belongsTo('App\Models\Provincia_Region');
     }
 
     public function telefonos(){
-    	return $this->hasMany('App\Telefono_Importador');
+    	return $this->hasMany('App\Models\Telefono_Importador');
     }
 
     public function productores(){
-        return $this->belongsToMany('App\Productor', 'Productor_Importador');
+        return $this->belongsToMany('App\Models\Productor', 'Productor_Importador');
     }
 
      public function distribuidores(){
-        return $this->belongsToMany('App\Distribuidor', 'Importador_Distribuidor');
+        return $this->belongsToMany('App\Models\Distribuidor', 'Importador_Distribuidor');
     }
 
      public function marcas(){
-        return $this->belongsToMany('App\Marca', 'Importador_Marca');
+        return $this->belongsToMany('App\Models\Marca', 'Importador_Marca');
     }
 
     public function ofertas_importadores(){
-    	return $this->hasMany('App\Oferta_Importador');
+    	return $this->hasMany('App\Models\Oferta_Importador');
     }
 
     public function demandas_productos_importadores(){
-    	return $this->hasMany('App\Demanda_Producto_Importador');
+    	return $this->hasMany('App\Models\Demanda_Producto_Importador');
     }
 
     public function creditos(){
-    	return $this->belongsToMany('App\Credito', 'credito_importador')->withPivot('total', 'fecha_compra')->withTimestamps();
+    	return $this->belongsToMany('App\Models\Credito', 'credito_importador')->withPivot('total', 'fecha_compra')->withTimestamps();
     }
 
     public function deducciones_creditos_importadores(){
-    	return $this->belongsTo('App\Deduccion_Credito_Importador');
+    	return $this->belongsTo('App\Models\Deduccion_Credito_Importador');
     }
 }

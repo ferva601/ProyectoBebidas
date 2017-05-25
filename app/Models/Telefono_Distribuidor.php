@@ -13,6 +13,6 @@ class Telefono_Distribuidor extends Model
     ]; 
 
     public function distribuidor(){
-    	return $this->belongsTo('App\Distribuidor');
+    	return $this->belongsTo('App\Models\Distribuidor');
     }
 }

@@ -13,6 +13,6 @@ class Telefono_Horeca extends Model
     ]; 
 
     public function horeca(){
-    	return $this->belongsTo('App\Horeca');
+    	return $this->belongsTo('App\Models\Horeca');
     }
 }

@@ -13,6 +13,6 @@ class Banner extends Model
     ];
 
     public function banner(){
-    	return $this->hasMany('App\Impresion_Banner');
+    	return $this->hasMany('App\Models\Impresion_Banner');
     }
 }

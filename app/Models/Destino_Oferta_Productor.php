@@ -13,15 +13,15 @@ class Destino_Oferta_Productor extends Model
     ]; 
 
     public function oferta_productor(){
-    	return $this->belongsTo('App\Oferta_Productor');
+    	return $this->belongsTo('App\Models\Oferta_Productor');
     }
 
     public function pais(){
-    	return $this->belongsTo('App\Pais');
+    	return $this->belongsTo('App\Models\Pais');
     }
 
     public function provincia_region(){
-    	return $this->belongsTo('App\Provincia_Region');
+    	return $this->belongsTo('App\Models\Provincia_Region');
     }
 
 }

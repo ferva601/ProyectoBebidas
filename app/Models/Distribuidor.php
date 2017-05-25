@@ -14,47 +14,47 @@ class Distribuidor extends Model
     ];
 
     public function user(){
-    	return $this->belongsTo('App\User');
+    	return $this->belongsTo('App\Models\User');
     }
 
     public function pais(){
-    	return $this->belongsTo('App\Pais');
+    	return $this->belongsTo('App\Models\Pais');
     }
 
     public function provincia_region(){
-    	return $this->belongsTo('App\Provincia_Region');
+    	return $this->belongsTo('App\Models\Provincia_Region');
     }
 
     public function telefonos(){
-    	return $this->hasMany('App\Telefono_Distribuidor');
+    	return $this->hasMany('App\Models\Telefono_Distribuidor');
     }
 
     public function productores(){
-        return $this->belongsToMany('App\Productor', 'Productor_Distribuidor');
+        return $this->belongsToMany('App\Models\Productor', 'Productor_Distribuidor');
     }
 
     public function importadores(){
-        return $this->belongsToMany('App\Importador', 'Importador_Distribuidor');
+        return $this->belongsToMany('App\Models\Importador', 'Importador_Distribuidor');
     }
 
     public function marcas(){
-        return $this->belongsToMany('App\Marca', 'Distribuidor_Marca');
+        return $this->belongsToMany('App\Models\Marca', 'Distribuidor_Marca');
     }
 
     public function ofertas_distribuidores(){
-    	return $this->hasMany('App\Oferta_Distribuidor');
+    	return $this->hasMany('App\Models\Oferta_Distribuidor');
     }
 
     public function demandas_prodcutos_distribuidores(){
-    	return $this->hasMany('App\Demanda_Producto_Distribuidor');
+    	return $this->hasMany('App\Models\Demanda_Producto_Distribuidor');
     }
 
     public function creditos(){
-    	return $this->belongsToMany('App\Credito', 'credito_distribuidor')->withPivot('total', 'fecha_compra')->withTimestamps();
+    	return $this->belongsToMany('App\Models\Credito', 'credito_distribuidor')->withPivot('total', 'fecha_compra')->withTimestamps();
     }
 
      public function deducciones_creditos_distribuidores(){
-    	return $this->belongsTo('App\Deduccion_Credito_Distribuidor');
+    	return $this->belongsTo('App\Models\Deduccion_Credito_Distribuidor');
     }
 
 }

@@ -14,18 +14,18 @@ class Horeca extends Model
     ];
 
     public function user(){
-    	return $this->belongsTo('App\User');
+    	return $this->belongsTo('App\Models\User');
     }
 
     public function pais(){
-    	return $this->belongsTo('App\Pais');
+    	return $this->belongsTo('App\Models\Pais');
     }
 
     public function provincia_region(){
-    	return $this->belongsTo('App\Provincia_Region');
+    	return $this->belongsTo('App\Models\Provincia_Region');
     }
 
     public function telefonos(){
-    	return $this->hasMany('App\Telefono_Horeca');
+    	return $this->hasMany('App\Models\Telefono_Horeca');
     }
 }

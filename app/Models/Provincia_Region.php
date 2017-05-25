@@ -13,63 +13,63 @@ class Provincia_Region extends Model
     ]; 
 
     public function pais(){
-    	return $this->belongsTo('App\Pais');
+    	return $this->belongsTo('App\Models\Pais');
     }
 
     public function users(){
-    	return $this->hasMany('App\User');
+    	return $this->hasMany('App\Models\User');
     }
 
     public function productores(){
-    	return $this->hasMany('App\Productor');
+    	return $this->hasMany('App\Models\Productor');
     }
 
     public function importadores(){
-    	return $this->hasMany('App\Importador');
+    	return $this->hasMany('App\Models\Importador');
     }
 
     public function distribuidores(){
-    	return $this->hasMany('App\Distribuidor');
+    	return $this->hasMany('App\Models\Distribuidor');
     }
 
     public function horeca(){
-    	return $this->hasMany('App\Horeca');
+    	return $this->hasMany('App\Models\Horeca');
     }
 
     public function marcas(){
-        return $this->hasMany('App\Marca');
+        return $this->hasMany('App\Models\Marca');
     }
 
     public function productos(){
-        return $this->hasMany('App\Producto');
+        return $this->hasMany('App\Models\Producto');
     }
 
     public function destinos_ofertas_productores(){
-        return $this->hasMany('App\Destino_Oferta_Productor');
+        return $this->hasMany('App\Models\Destino_Oferta_Productor');
     }
 
     public function destinos_ofertas_importadores(){
-        return $this->hasMany('App\Destino_Oferta_Importador');
+        return $this->hasMany('App\Models\Destino_Oferta_Importador');
     }
 
     public function destinos_ofertas_distribuidores(){
-        return $this->hasMany('App\Destino_Oferta_Distribuidor');
+        return $this->hasMany('App\Models\Destino_Oferta_Distribuidor');
     }
 
     public function demandas_productos_importadores(){
-        return $this->hasMany('App\Demanda_Producto_Importador');
+        return $this->hasMany('App\Models\Demanda_Producto_Importador');
     }
 
     public function demandas_productos_distribuidores(){
-        return $this->hasMany('App\Demanda_Producto_Distribuidor');
+        return $this->hasMany('App\Models\Demanda_Producto_Distribuidor');
     }
 
      public function demandas_importadores(){
-        return $this->hasMany('App\Demanda_Importador');
+        return $this->hasMany('App\Models\Demanda_Importador');
     }
 
     public function demandas_distribuidores(){
-        return $this->hasMany('App\Demanda_Distribuidor');
+        return $this->hasMany('App\Models\Demanda_Distribuidor');
     }
 
 }

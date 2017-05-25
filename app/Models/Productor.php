@@ -14,50 +14,50 @@ class Productor extends Model
     ];
 
     public function user(){
-    	return $this->belongsTo('App\User');
+    	return $this->belongsTo('App\Models\User');
     }
 
     public function pais(){
-    	return $this->belongsTo('App\Pais');
+    	return $this->belongsTo('App\Models\Pais');
     }
 
     public function provincia_region(){
-    	return $this->belongsTo('App\Provincia_Region');
+    	return $this->belongsTo('App\Models\Provincia_Region');
     }
 
     public function telefonos(){
-    	return $this->hasMany('App\Telefono_Productor');
+    	return $this->hasMany('App\Models\Telefono_Productor');
     }
 
     public function importadores(){
-        return $this->belongsToMany('App\Importador', 'Productor_Importador');
+        return $this->belongsToMany('App\Models\Importador', 'Productor_Importador');
     }
 
     public function distribuidores(){
-        return $this->belongsToMany('App\Distribuidor', 'Productor_Distribuidor');
+        return $this->belongsToMany('App\Models\Distribuidor', 'Productor_Distribuidor');
     }
 
     public function marcas(){
-        return $this->hasMany('App\Marca');
+        return $this->hasMany('App\Models\Marca');
     }
 
     public function ofertas_productores(){
-        return $this->hasMany('App\Oferta_Productor');
+        return $this->hasMany('App\Models\Oferta_Productor');
     }
 
     public function demandas_importadores(){
-        return $this->hasMany('App\Demanda_Importador');
+        return $this->hasMany('App\Models\Demanda_Importador');
     }
 
     public function demandas_distribuidores(){
-        return $this->hasMany('App\Demanda_Distribuidor');
+        return $this->hasMany('App\Models\Demanda_Distribuidor');
     }
 
     public function creditos(){
-    	return $this->belongsToMany('App\Credito', 'credito_productor')->withPivot('total', 'fecha_compra')->withTimestamps();
+    	return $this->belongsToMany('App\Models\Credito', 'credito_productor')->withPivot('total', 'fecha_compra')->withTimestamps();
     }
 
     public function deducciones_creditos_productores(){
-        return $this->hasMany('App\Deduccion_Credito_Productor');
+        return $this->hasMany('App\Models\Deduccion_Credito_Productor');
     }
 }
