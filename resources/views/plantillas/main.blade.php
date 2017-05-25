@@ -12,18 +12,17 @@
 </head>
 
 <body>
-	@include('admin.template.partes.nav')
+	@include('plantillas.partes.nav')
 	<section>
 		@yield('content')
 	</section>
 
 	<footer>
-		@include('admin.template.partes.footer')
+		@include('plantillas.partes.footer')
 	</footer>
 
-	
 	{!! Html::script('bootstrap/js/bootstrap.js') !!}
-	{!! Html::script('js/usuarios.js') !!}
+	
 	
 </body>
 </html>

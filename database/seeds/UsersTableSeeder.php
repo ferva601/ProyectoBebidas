@@ -18,7 +18,8 @@ class UsersTableSeeder extends Seeder
 
 					// se genera un id al inserta cada registro
 			     $id = \DB::table('pais')->insertGetId(array( 
-			     	'name' => $faker->country,
+			     	'pais' => $faker->country,
+			     	'continente' =>$faker->randomElement(['1', '2', '3', '4', '5' ]), 
 			     
 			     	 ));
 
@@ -26,18 +27,18 @@ class UsersTableSeeder extends Seeder
 			     \DB::table('users')->insert(array(
 			           'name' => $faker->unique()->userName,
 			           'email'  => $faker->unique()->freeEmail,
-			           'password'  => $faker->\Hash::make('1234'),
+			           'password'  =>\Hash::make('1234'),
 			           'nombre'  => $faker->firstNameMale,
 			           'apellido' => $faker->lastName,
 			           'direccion' => $faker->address,
 			           'codigo_postal' => $faker->postcode,
 			           'pais_id' => $id,
 			           'provincia_region_id' => $faker->randomElement(['Africa', 'America', 'Asia', 'Europa', 'Oceania' ]),
-			           'avatar' => null,
 			           'estado_datos' => $faker->randomElement(['Actualizados', 'Sin Actualizar']),
 
+			          /* 'avatar' => null,
 			           'created_at' => null,
-			           'updated_at' => null,
+			           'updated_at' => null,*/
 			    ));
 
 
