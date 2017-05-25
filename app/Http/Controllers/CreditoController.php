@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreditoCreateRequest;
+use App\Http\Requests\CreditoUpdateRequest;
 use App\Models\Credito;
 
 class CreditoController extends Controller
@@ -34,7 +36,7 @@ class CreditoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreditoCreateRequest $request)
     {
         $credito=new Credito($request->all());
         $credito->save();
@@ -72,7 +74,7 @@ class CreditoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreditoUpdateRequest $request, $id)
     {
          $credito = Credito::find($id);
         $credito->fill($request->all());
