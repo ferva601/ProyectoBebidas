@@ -24,7 +24,6 @@ Route::resource('marca','MarcaController');
 
 Route::resource('usuario','UsuarioController');
 
-
 Route::resource('credito','CreditoController');
 
 Route::resource('bebida','BebidaController');
@@ -35,4 +34,13 @@ Route::resource('importador','ImportadorController');
 
 Route::resource('distribuidor','DistribuidorController');
 
+Route::resource('Oferta','OfertaController');
+
+Route::resource('Demanda-Producto-distribuidor','DemandaProductoDistribuidorController');
+
+Route::resource('Demanda-Producto-impostardor','DemandaProductoImportadorController');
+
+Route::resource('Demanda-importador','DemandaImportacionController');
+
+Route::resource('demanda-distribuidor','DemandaDistribucionController');
 
