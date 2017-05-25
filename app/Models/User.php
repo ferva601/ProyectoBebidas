@@ -12,7 +12,8 @@ class User extends Authenticatable
     protected $table = "user";
 
     protected $fillable = [
-        'name', 'email', 'password', 'nombre', 'apellido', 'direccion', 'codigo_postal', 'pais_id', 'provincia_region_id', 'avatar', 'estado_datos',
+        'name', 'email', 'password', 'nombre', 'apellido', 'direccion', 'codigo_postal', 'pais_id', 'provincia_region_id', 'avatar', 
+        'estado_datos', 'telefono', 'telefono_opcional',
     ];
 
     protected $hidden = [
@@ -25,10 +26,6 @@ class User extends Authenticatable
 
     public function provincia_region(){
     	return $this->belongsTo('App\Models\Provincia_Region');
-    }
-
-    public function telefonos(){
-        return $this->hasMany('App\Models\Telefono_Usuario.php');
     }
 
     public function productores(){
