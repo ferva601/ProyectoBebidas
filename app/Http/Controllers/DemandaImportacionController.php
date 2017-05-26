@@ -29,8 +29,15 @@ class DemandaImportacionController extends Controller
     public function create()
     {
         $producto = Producto::all();
-        $paises = Pais::all();
-        $provincias = Provincia_Region::all();
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
 
         return view('demanda_importador.create')->with(compact('producto','paises','provincias')); 
     }
@@ -68,8 +75,15 @@ class DemandaImportacionController extends Controller
     {
         $demanda_importador = Demanda_Importador::find($id);
         $producto = Producto::all();
-        $paises = Pais::all();
-        $provincias = Provincia_Region::all();
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
 
         return view('demanda_importador.edit')->with(compact('demanda_importador','producto', 'paises', 'provincias'));
     }

@@ -29,8 +29,15 @@ class DemandaDistribucionController extends Controller
     public function create()
     {
         $producto = Producto::all();
-        $paises = Pais::all();
-        $provincias = Provincia_Region::all();
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
 
         return view('demanda_distribuidor.create')->with(compact('producto','paises','provincias')); 
     }
@@ -68,8 +75,15 @@ class DemandaDistribucionController extends Controller
     {
         $demanda_distribuidor = Demanda_Distribuidor::find($id);
         $producto = Producto::all();
-        $paises = Pais::all();
-        $provincias = Provincia_Region::all();
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
 
         return view('demanda_distribuidor.edit')->with(compact('demanda_distribuidor','producto', 'paises', 'provincias'));
     }

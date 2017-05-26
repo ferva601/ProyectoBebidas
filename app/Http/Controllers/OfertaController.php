@@ -30,8 +30,16 @@ class OfertaController extends Controller
     public function create()
     {   
         $producto = Producto::all();
-        $paises = Pais::all();
-        $provincias = Provincia_Region::all();
+        
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
 
         return view('oferta.create')->with(compact('producto','paises','provincias'));
     }
@@ -69,8 +77,16 @@ class OfertaController extends Controller
     public function edit($id)
     {
         $oferta = Oferta::find($id);
-        $paises = Pais::all();
-        $provincias = Provincia_Region::all();
+
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+                        
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
 
         return view('oferta.edit')->with(compact('oferta', 'paises', 'provincias'));
     }

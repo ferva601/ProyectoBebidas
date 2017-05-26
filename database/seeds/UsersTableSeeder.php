@@ -36,9 +36,9 @@ class UsersTableSeeder extends Seeder
 			           'provincia_region_id' => $faker->randomElement(['Africa', 'America', 'Asia', 'Europa', 'Oceania' ]),
 			           'estado_datos' => $faker->randomElement(['Actualizados', 'Sin Actualizar']),
 
-			          /* 'avatar' => null,
-			           'created_at' => null,
-			           'updated_at' => null,*/
+			          	'avatar' => '21',
+			           	'created_at' => '',
+			           	'updated_at' => '',
 			    ));
 
 

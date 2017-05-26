@@ -44,3 +44,6 @@ Route::resource('Demanda-importador','DemandaImportacionController');
 
 Route::resource('demanda-distribuidor','DemandaDistribucionController');
 
+Route::resource('opinion','OpinionController');
+
+Route::resource('banner','BannerController');
