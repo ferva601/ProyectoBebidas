@@ -7,6 +7,7 @@ use App\Models\Demanda_Distribuidor;
 use App\Models\Producto;
 use App\Models\Pais;
 use App\Models\Provincia_Region;
+use DB;
 
 class DemandaDistribucionController extends Controller
 {
@@ -17,8 +18,8 @@ class DemandaDistribucionController extends Controller
      */
     public function index()
     {
-        $demanda_distribuidor = Demanda_Distribuidor::paginate(1);
-        return view('demanda_distribuidor.index')->with(compact('demanda_distribuidor'));
+        $demandaDistribuidores = Demanda_Distribuidor::paginate(1);
+        return view('demandaDistribucion.index')->with(compact('demandaDistribuidores'));
     }
 
     /**
@@ -28,11 +29,22 @@ class DemandaDistribucionController extends Controller
      */
     public function create()
     {
-        $producto = Producto::all();
-        $paises = Pais::all();
-        $provincias = Provincia_Region::all();
+        $productos = DB::table('producto')
+                        ->orderBy('nombre')
+                        ->select('id', 'nombre')
+                        ->get();
 
-        return view('demanda_distribuidor.create')->with(compact('producto','paises','provincias')); 
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
+
+        return view('demandaDistribucion.create')->with(compact('productos','paises','provincias')); 
     }
 
     /**
@@ -66,12 +78,24 @@ class DemandaDistribucionController extends Controller
      */
     public function edit($id)
     {
-        $demanda_distribuidor = Demanda_Distribuidor::find($id);
-        $producto = Producto::all();
-        $paises = Pais::all();
-        $provincias = Provincia_Region::all();
+        $demandaDistribuidor = Demanda_Distribuidor::find($id);
 
-        return view('demanda_distribuidor.edit')->with(compact('demanda_distribuidor','producto', 'paises', 'provincias'));
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
+        
+        $productos = DB::table('producto')
+                        ->orderBy('nombre')
+                        ->select('id', 'nombre')
+                        ->get();
+
+        return view('demandaDistribucion.edit')->with(compact('demandaDistribuidor','productos', 'paises', 'provincias'));
     }
 
     /**
