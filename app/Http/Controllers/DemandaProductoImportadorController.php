@@ -9,6 +9,7 @@ use App\Models\Pais;
 use App\Models\Provincia_Region;
 use App\Models\Clase_Bedida;
 use App\Models\Bebida;
+use DB;
 
 class DemandaProductoImportadorController extends Controller
 {
@@ -19,8 +20,8 @@ class DemandaProductoImportadorController extends Controller
      */
     public function index()
     {
-        $demanda_producto_Importador = Demanda_Producto_Importador::paginate(1);
-        return view('demanda_producto_Importador.index')->with(compact('demanda_producto_Importador '));
+        $demandasProductosImportadores = Demanda_Producto_Importador::paginate(1);
+        return view('demandaProductoImportador.index')->with(compact('demandasProductosImportadores'));
     }
 
     /**
@@ -30,12 +31,22 @@ class DemandaProductoImportadorController extends Controller
      */
     public function create()
     {
-        $producto = Producto::all();
-        $paises = Pais::all();
-        $provincias = Provincia_Region::all();
-        $clase_bedida = Clase_Bedida::all();
-        $bedida = Bedida::all();
-        return view('demanda_producto_Importador .create')->with(compact('bedida','clase_bedida','producto','paises','provincias'));
+        $productos = DB::table('producto')
+                        ->orderBy('nombre')
+                        ->select('id', 'nombre')
+                        ->get();
+
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
+
+        return view('demandaProductoImportador.create')->with(compact('productos','paises','provincias'));
     }
 
     /**
@@ -70,14 +81,24 @@ class DemandaProductoImportadorController extends Controller
      */
     public function edit($id)
     {
-        $demanda_producto_Importador  = Demanda_Producto_Importador::find($id);
-        $producto = Producto::all();
-        $paises = Pais::all();
-        $provincias = Provincia_Region::all();
-        $clase_bedida = Clase_Bedida::all();
-        $bedida = Bedida::all();
+        $demandaProductoImportador  = Demanda_Producto_Importador::find($id);
+        
+        $productos = DB::table('producto')
+                        ->orderBy('nombre')
+                        ->select('id', 'nombre')
+                        ->get();
 
-        return view('demanda_producto_Importador .edit')->with(compact('demanda_producto_Importador ','producto', 'paises', 'provincias','bedida','clase_bedida')); 
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
+
+        return view('demandaProductoImportador.edit')->with(compact('demandaProductoImportador','productos', 'paises', 'provincias')); 
     }
 
     /**
