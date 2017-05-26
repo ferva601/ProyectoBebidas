@@ -7,6 +7,7 @@ use App\Models\Demanda_Importador;
 use App\Models\Producto;
 use App\Models\Pais;
 use App\Models\Provincia_Region;
+use DB;
 
 class DemandaImportacionController extends Controller
 {
@@ -17,8 +18,8 @@ class DemandaImportacionController extends Controller
      */
     public function index()
     {
-        $demanda_importador = Demanda_Importador::paginate(1);
-        return view('demanda_importador.index')->with(compact('demanda_importador'));
+        $demandaImportadores = Demanda_Importador::paginate(1);
+        return view('demandaImportacion.index')->with(compact('demandaImportadores'));
     }
 
     /**
@@ -28,11 +29,22 @@ class DemandaImportacionController extends Controller
      */
     public function create()
     {
-        $producto = Producto::all();
-        $paises = Pais::all();
-        $provincias = Provincia_Region::all();
+        $productos = DB::table('producto')
+                        ->orderBy('nombre')
+                        ->select('id', 'nombre')
+                        ->get();
 
-        return view('demanda_importador.create')->with(compact('producto','paises','provincias')); 
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
+
+        return view('demandaImportacion.create')->with(compact('productos','paises','provincias')); 
     }
 
     /**
@@ -66,12 +78,24 @@ class DemandaImportacionController extends Controller
      */
     public function edit($id)
     {
-        $demanda_importador = Demanda_Importador::find($id);
-        $producto = Producto::all();
-        $paises = Pais::all();
-        $provincias = Provincia_Region::all();
+        $demandaImportador = Demanda_Importador::find($id);
+        
+        $productos = DB::table('producto')
+                        ->orderBy('nombre')
+                        ->select('id', 'nombre')
+                        ->get();
 
-        return view('demanda_importador.edit')->with(compact('demanda_importador','producto', 'paises', 'provincias'));
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
+
+        return view('demandaImportacion.edit')->with(compact('demandaImportador','productos', 'paises', 'provincias'));
     }
 
     /**
