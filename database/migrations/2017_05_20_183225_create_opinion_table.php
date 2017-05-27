@@ -10,21 +10,17 @@ class CreateOpinionTable extends Migration
     {
         Schema::create('opinion', function (Blueprint $table){
         	$table->increments('id');
-        	$table->integer('user_id');
+          $table->enum('tipo_creador', ['U','P','I','D','H']);
+        	$table->integer('creador_id');
         	$table->integer('producto_id');
         	$table->integer('valoracion');
         	$table->string('comentario');
         	$table->date('fecha');
-        	$table->enum('editada', ['Si', 'No'])->default('No');
+        	$table->boolean('editada');
         	$table->date('fecha_ultima_edicion');
           $table->timestamps();
 
-            $table->foreign('user_id')
-                  ->references('id')->on('user')
-                  ->onDelete('restrict')
-                  ->onUpdate('cascade');
-
-            $table->foreign('producto_id')
+          $table->foreign('producto_id')
                   ->references('id')->on('producto')
                   ->onDelete('restrict')
                   ->onUpdate('cascade');

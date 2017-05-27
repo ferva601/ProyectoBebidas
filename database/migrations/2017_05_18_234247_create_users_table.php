@@ -16,11 +16,13 @@ class CreateUsersTable extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->text('direccion');
+            $table->string('telefono');
+            $table->string('telefono_opcional')->nullable();   
             $table->integer('codigo_postal');
             $table->integer('pais_id');
             $table->integer('provincia_region_id');
             $table->string('avatar');
-            $table->enum('estado_datos', ['Actualizados', 'Sin Actualizar']);            
+            $table->boolean('estado_datos'); 
             $table->rememberToken();
             $table->timestamps();
 

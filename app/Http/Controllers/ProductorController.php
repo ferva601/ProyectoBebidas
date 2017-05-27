@@ -59,12 +59,7 @@ class ProductorController extends Controller
                         ->select('id', 'provincia')
                         ->get();
 
-        $telefonos = DB::table('telefono_productor')
-                        ->OrderBY('id')
-                        ->select('id', 'telefono')
-                        ->get();
-
-       return view('productor.edit')->with(compact('productor','paises', 'provincias', 'telefonos'));
+       return view('productor.edit')->with(compact('productor','paises', 'provincias'));
     }
 
     public function update(Request $request, $id)

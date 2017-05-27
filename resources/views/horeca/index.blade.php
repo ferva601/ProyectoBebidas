@@ -14,10 +14,10 @@
 		<tbody>
 			@foreach ($horecas as $horeca)
 				<tr>
-					<td>{{ $horeca->user_id }}</td>
+					<td>{{ $horeca->user->nombre }}</td>
 					<td>{{ $horeca->nombre }}</td>
 					<td>{{ $horeca->direccion }}</td>
-					<td>{{ $horeca->pais_id }}</td>
+					<td>{{ $horeca->pais->pais }}</td>
 					<td>{{ $horeca->email }}</td>
 					<td>{{ $horeca->tipo_horeca }}</td>
 					<td> <a class="btn btn-primary" href="{{ route('horeca.edit', $horeca->id ) }}">Modificar</a></td>

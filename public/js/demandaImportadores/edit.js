@@ -33,13 +33,10 @@ $(document).ready(function() {
         }
     }
 
-    var valorStatus = $("#status_hidden").val();
-  
-  var selectStatus = document.getElementById("status");
-    var cantStatus = selectStatus.length;
-    for (i = 0; i < cantStatus; i++) {
-      if (selectStatus[i].value == valorStatus) {
-          selectStatus[i].selected = true;
-        }
-    } 
+     var valorStatus = $("#status_hidden").val();
+    if (valorStatus == "1" ){
+      $("#status option[value='1']").attr("selected",true);
+    }else{
+      $("#status option[value='0']").attr("selected",true);
+    }
 });

@@ -1,6 +1,6 @@
 {!! Form::open(['route' => ['demanda-importador.update', $demandaImportador->id], 'method' => 'PUT']) !!}
 
-	{!! Form::hidden('productor_id', '2') !!}
+	{!! Form::hidden('productor_id', '1') !!}
 	{!! Form::hidden('producto_hidden', $demandaImportador->producto_id, ['id' => 'producto_hidden']) !!}
 	{!! Form::hidden('pais_hidden', $demandaImportador->pais_id, ['id' => 'pais_hidden']) !!}
 	{!! Form::hidden('provincia_hidden', $demandaImportador->provincia_region_id, ['id' => 'provincia_hidden']) !!}
@@ -37,8 +37,8 @@
 	<div class="form-group">
 		{!! Form::label('producto_id', 'Seleccione el status') !!}
 		<select name="status" id="status" class="form-control">
-			<option value="Activa">Activa</option>
-			<option value="Inactiva">Inactiva</option>
+			<option value="1">Activa</option>
+			<option value="0">Inactiva</option>
 		</select>
 	</div>
 

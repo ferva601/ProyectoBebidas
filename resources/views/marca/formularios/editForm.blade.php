@@ -30,8 +30,8 @@
 
 	<div class="form-group">
 		<select name="reclamada" id="reclamada" class="form-control">
-			<option value="Si">Si</option>
-			<option value="No">No</option>
+			<option value="0">No</option>
+			<option value="1">Si</option>
 		</select>
 	</div>
 

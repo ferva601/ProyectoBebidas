@@ -29,8 +29,15 @@ class HorecaController extends Controller
      */
     public function create()
     {
-        $paises = Pais::all();
-        $provincias = Provincia_Region::all();
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
 
         return view('horeca.create')->with(compact('paises', 'provincias'));
     }
@@ -73,8 +80,15 @@ class HorecaController extends Controller
      */
     public function edit($id)
     {
-        $paises = Pais::all();
-        $provincias = Provincia_Region::all();
+       $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
 
         $horeca = Horeca::find($id);
 

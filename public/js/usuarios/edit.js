@@ -23,12 +23,9 @@ $(document).ready(function() {
     }
 
     var valorEstadoDatos = $("#datos_hidden").val();
-  
-  var selectEstadoDatos = document.getElementById("estado_datos");
-    var cantDatos = selectEstadoDatos.length;
-    for (i = 0; i < cantDatos; i++) {
-      if (selectEstadoDatos[i].value == valorEstadoDatos) {
-          selectEstadoDatos[i].selected = true;
-        }
-    } 
+    if (valorEstadoDatos == "1" ){
+      $("#estado_datos option[value='1']").attr("selected",true);
+    }else{
+      $("#estado_datos option[value='0']").attr("selected",true);
+    }
 });

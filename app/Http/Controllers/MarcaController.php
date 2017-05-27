@@ -19,9 +19,20 @@ class MarcaController extends Controller
     public function create()
     {
         //
-         $paises=Pais::all();
-         $provincias=Provincia_Region::all();
-         $productores=Productor::all();
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
+
+        $productores = DB::table('productor')
+                        ->orderBy('nombre')
+                        ->select('id', 'nombre')
+                        ->get();
 
         return view ('marca.create')->with (compact('paises','provincias','productores'));
     }

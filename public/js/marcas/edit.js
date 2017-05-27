@@ -1,15 +1,11 @@
 $(document).ready(function() {
 
-	//Cargar el valor del Select ClaseBebida
-   var valorReclamada = $("#reclamada_hidden").val();
-	
-	var selectReclamada = document.getElementById("reclamada");
-  	var cantOpciones = selectReclamada.length;
-   	for (i = 0; i < cantOpciones; i++) {
-    	if (selectReclamada[i].value == valorReclamada) {
-       		selectReclamada[i].selected = true;
-       	}
-    }
+	 var valorReclamada = $("#reclamada_hidden").val();
+  if (valorReclamada == "1" ){
+    $("#reclamada option[value='1']").attr("selected",true);
+  }else{
+    $("#reclamada option[value='0']").attr("selected",true);
+  }
 
 	//Cargar el valor del Select Pais
 	var valorPais = $("#pais_hidden").val();

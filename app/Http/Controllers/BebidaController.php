@@ -36,7 +36,7 @@ class BebidaController extends Controller
      */
     public function store(Request $request)
     {
-         $bebida=new Bebida($request->all());
+        $bebida=new Bebida($request->all());
         $bebida->save();
         return redirect()->action('BebidaController@index');
     }

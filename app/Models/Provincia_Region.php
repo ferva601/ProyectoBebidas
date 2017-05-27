@@ -44,32 +44,19 @@ class Provincia_Region extends Model
         return $this->hasMany('App\Models\Producto');
     }
 
-    public function destinos_ofertas_productores(){
-        return $this->hasMany('App\Models\Destino_Oferta_Productor');
+    public function destinos_ofertas(){
+        return $this->hasMany('App\Models\Destino_Oferta');
     }
 
-    public function destinos_ofertas_importadores(){
-        return $this->hasMany('App\Models\Destino_Oferta_Importador');
+    public function demandas_productos(){
+        return $this->hasMany('App\Models\Demanda_Producto');
     }
 
-    public function destinos_ofertas_distribuidores(){
-        return $this->hasMany('App\Models\Destino_Oferta_Distribuidor');
-    }
-
-    public function demandas_productos_importadores(){
-        return $this->hasMany('App\Models\Demanda_Producto_Importador');
-    }
-
-    public function demandas_productos_distribuidores(){
-        return $this->hasMany('App\Models\Demanda_Producto_Distribuidor');
-    }
-
-     public function demandas_importadores(){
+    public function demandas_importadores(){
         return $this->hasMany('App\Models\Demanda_Importador');
     }
 
     public function demandas_distribuidores(){
         return $this->hasMany('App\Models\Demanda_Distribuidor');
     }
-
 }

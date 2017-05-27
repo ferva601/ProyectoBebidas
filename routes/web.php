@@ -36,9 +36,7 @@ Route::resource('distribuidor','DistribuidorController');
 
 Route::resource('oferta','OfertaController');
 
-Route::resource('demanda-producto-distribuidor','DemandaProductoDistribuidorController');
-
-Route::resource('demanda-producto-importador','DemandaProductoImportadorController');
+Route::resource('demanda-producto','DemandaProductoController');
 
 Route::resource('demanda-importador','DemandaImportacionController');
 

@@ -7,7 +7,7 @@ use App\Models\Oferta;
 use App\Models\Producto;
 use App\Models\Pais;
 use App\Models\Provincia_Region;
-
+use DB;
 
 class OfertaController extends Controller
 {
@@ -18,8 +18,8 @@ class OfertaController extends Controller
      */
     public function index()
     {
-        $oferta = Oferta::paginate(1);
-        return view('oferta.index')->with(compact('oferta'));
+        $ofertas = Oferta::paginate(1);
+        return view('oferta.index')->with(compact('ofertas'));
     }
 
     /**
@@ -29,11 +29,22 @@ class OfertaController extends Controller
      */
     public function create()
     {   
-        $producto = Producto::all();
-        $paises = Pais::all();
-        $provincias = Provincia_Region::all();
+        $productos = DB::table('producto')
+                        ->orderBy('nombre')
+                        ->select('id', 'nombre')
+                        ->get();
 
-        return view('oferta.create')->with(compact('producto','paises','provincias'));
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
+
+        return view('oferta.create')->with(compact('productos','paises','provincias'));
     }
 
     /**
@@ -69,8 +80,16 @@ class OfertaController extends Controller
     public function edit($id)
     {
         $oferta = Oferta::find($id);
-        $paises = Pais::all();
-        $provincias = Provincia_Region::all();
+        
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
 
         return view('oferta.edit')->with(compact('oferta', 'paises', 'provincias'));
     }

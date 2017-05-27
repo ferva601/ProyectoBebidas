@@ -52,8 +52,8 @@
 
 		<div class="form-group">
 			<select name="estado_datos" id="estado_datos" class="form-control">
-				<option value="Actualizados">Actualizados</option>
-				<option value="Sin Actualizar">Sin Actualizar</option>
+				<option value="0">Sin Actualizar</option>
+				<option value="1">Actualizados</option>
 			</select>
 		</div>
 

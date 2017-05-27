@@ -10,8 +10,8 @@ class Horeca extends Model
 
     protected $fillable = [
         'user_id', 'nombre', 'nombre_seo', 'descripcion', 'direccion', 'codigo_postal', 'pais_id', 'provincia_region_id', 'logo', 'persona_contacto',
-        'email', 'website', 'facebook', 'twitter', 'instagram', 'reclamada', 'latitud', 'longitud', 'estado_datos', 'tipo_horeca', 'saldo', 'telefono',
-        'telefono_opcional'
+        'telefono', 'telefono_opcional', 'email', 'website', 'facebook', 'twitter', 'instagram', 'reclamada', 
+        'latitud', 'longitud', 'estado_datos', 'tipo_horeca', 'saldo', 
     ];
 
     public function user(){
@@ -24,5 +24,17 @@ class Horeca extends Model
 
     public function provincia_region(){
     	return $this->belongsTo('App\Models\Provincia_Region');
+    }
+
+    public function creditos(){
+        return $this->belongsToMany('App\Models\Credito', 'horeca_credito')->withPivot('total', 'fecha_compra')->withTimestamps();
+    }
+
+    public function deducciones_creditos_horecas(){
+        return $this->hasMany('App\Models\Deduccion_Credito_Horeca');
+    }
+
+    public function demandas_productos(){
+        return $this->hasMany('App\Models\Demanda_Producto');
     }
 }

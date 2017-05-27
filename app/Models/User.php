@@ -12,8 +12,8 @@ class User extends Authenticatable
     protected $table = "user";
 
     protected $fillable = [
-        'name', 'email', 'password', 'nombre', 'apellido', 'direccion', 'codigo_postal', 'pais_id', 'provincia_region_id', 'avatar', 
-        'estado_datos', 'telefono', 'telefono_opcional',
+        'name', 'email', 'password', 'nombre', 'apellido', 'direccion', 'telefono', 'telefono_opcional', 
+        'codigo_postal', 'pais_id', 'provincia_region_id', 'avatar', 'estado_datos', 
     ];
 
     protected $hidden = [
@@ -45,6 +45,6 @@ class User extends Authenticatable
     }
 
     public function opiniones(){
-    	return $this->hasMany('App\Models\Opinion');
+        return $this->hasMany('App\Models\Opinion');
     }
 }

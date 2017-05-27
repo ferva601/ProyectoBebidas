@@ -11,7 +11,7 @@ class CreatePaisTable extends Migration
         Schema::create('pais', function (Blueprint $table ){
             $table->increments('id');
             $table->string('pais');
-            $table->enum('continente', ['Africa', 'America', 'Asia', 'Europa', 'Oceania' ]);
+            $table->enum('continente', ['AF','AM','AS','EU','OC']);
             $table->timestamps();
         });
 

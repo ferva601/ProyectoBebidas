@@ -14,7 +14,7 @@ class CreateDemandaImportadorTable extends Migration
         	$table->integer('producto_id');
         	$table->integer('pais_id');
         	$table->integer('provincia_region_id');
-          $table->enum('status', ['Activa', 'Inactiva']);
+          $table->boolean('status');
           $table->timestamps();
 
             $table->foreign('producto_id')

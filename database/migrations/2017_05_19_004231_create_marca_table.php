@@ -12,7 +12,7 @@ class CreateMarcaTable extends Migration
             $table->increments('id');
             $table->integer('productor_id');
             $table->integer('creador_id');
-            $table->enum('tipo_creador', ['Productor', 'Importador', 'Distribuidor']);
+            $table->enum('tipo_creador', ['P', 'I', 'D']);
             $table->string('nombre');
             $table->string('nombre_seo');
             $table->text('descripcion');
@@ -20,7 +20,7 @@ class CreateMarcaTable extends Migration
             $table->integer('provincia_region_id');
             $table->string('logo');
             $table->string('website')->nullable();
-            $table->enum('reclamada', ['Si', 'No']);
+            $table->boolean('reclamada');
             $table->timestamps();
 
           $table->foreign('productor_id')

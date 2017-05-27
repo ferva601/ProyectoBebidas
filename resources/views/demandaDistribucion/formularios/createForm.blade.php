@@ -1,6 +1,6 @@
 {!! Form::open(['route' => 'demanda-distribuidor.store', 'method' => 'POST']) !!}
 
-	{!! Form::hidden('productor_id', '2') !!}
+	{!! Form::hidden('productor_id', '1') !!}
 
 	<div class="form-group">
 		{!! Form::label('producto_id', 'Seleccione el producto') !!}
@@ -30,10 +30,10 @@
 	</div>
 
 	<div class="form-group">
-		{!! Form::label('producto_id', 'Seleccione el status') !!}
+		{!! Form::label('status', 'Seleccione el status') !!}
 		<select name="status" class="form-control">
-			<option value="Activa">Activa</option>
-			<option value="Inactiva">Inactiva</option>
+			<option value="1">Activa</option>
+			<option value="0">Inactiva</option>
 		</select>
 	</div>
 

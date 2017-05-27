@@ -9,8 +9,8 @@ class Marca extends Model
     protected $table = "marca";
 
      protected $fillable = [
-        'productor_id', 'creador_id', 'tipo_creador', 'nombre', 'nombre_seo', 'descripcion', 'pais_id', 'provincia_region_id', 'logo',
-        'website', 'reclamada',
+        'productor_id', 'creador_id', 'tipo_creador', 'nombre', 'nombre_seo', 'descripcion', 'pais_id', 
+        'provincia_region_id', 'logo', 'website', 'reclamada',
     ];
 
     public function productor(){
@@ -26,11 +26,11 @@ class Marca extends Model
     }
 
     public function importadores(){
-        return $this->belongsToMany('App\Models\Importador', 'Importador_Marca');
+        return $this->belongsToMany('App\Models\Importador', 'importador_marca');
     }
 
     public function distribuidores(){
-        return $this->belongsToMany('App\Models\Distribuidor', 'Distribuidor_Marca');
+        return $this->belongsToMany('App\Models\Distribuidor', 'distribuidor_marca');
     }
 
      public function productos(){

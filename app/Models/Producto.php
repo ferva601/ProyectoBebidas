@@ -9,7 +9,8 @@ class Producto extends Model
     protected $table = "producto";
 
      protected $fillable = [
-        'nombre', 'nombre_seo', 'descripcion', 'pais_id', 'provincia_region_id', 'clase_bebida_id', 'marca_id', 'imagen', 'ano_produccion',
+        'nombre', 'nombre_seo', 'descripcion', 'pais_id', 'provincia_region_id', 'clase_bebida_id', 'marca_id', 
+        'imagen', 'ano_produccion',
     ];
 
     public function pais(){
@@ -28,24 +29,12 @@ class Producto extends Model
     	return $this->belongsTo('App\Models\Marca');
     }
 
-    public function ofertas_productores(){
-        return $this->hasMany('App\Models\Oferta_Productor');
+    public function ofertas(){
+        return $this->hasMany('App\Models\Oferta');
     }
 
-    public function ofertas_importadores(){
-        return $this->hasMany('App\Models\Oferta_Importador');
-    }
-
-    public function ofertas_distribuidores(){
-        return $this->hasMany('App\Models\Oferta_Distribuidor');
-    }
-
-    public function demandas_productos_importadores(){
-    	return $this->hasMany('App\Models\Demanda_Producto_Importador');
-    }
-
-    public function demandas_productos_distribuidores(){
-    	return $this->hasMany('App\Models\Demanda_Producto_Distribuidor');
+    public function demandas_productos(){
+    	return $this->hasMany('App\Models\Demanda_Producto');
     }
 
     public function demandas_importadores(){

@@ -1,7 +1,7 @@
 {!! Form::open(['route'=>'marca.store','method'=>'POST']) !!}
 	
 	{!! Form::hidden ('creador_id','1') !!}
-	{!! Form::hidden ('tipo_creador','Productor') !!}
+	{!! Form::hidden ('tipo_creador','P') !!}
 
 	<div class="form-group">
 		{!! Form::label ('nombre','Nombre') !!}
@@ -25,8 +25,8 @@
 
 	<div class="form-group">
 		<select name="reclamada" class="form-control">
-			<option value="Si">Si</option>
-			<option value="No">No</option>
+			<option value="0">No</option>
+			<option value="1">Si</option>
 		</select>	
 	</div>
 	

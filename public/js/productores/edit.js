@@ -21,25 +21,18 @@ $(document).ready(function() {
           selectProvincia[i].selected = true;
         }   
     }
-
-    //Cargar el valor del Select ClaseBebida
-   var valorReclamada = $("#reclamada_hidden").val();
-  
-  var selectReclamada = document.getElementById("reclamada");
-    var cantOpciones = selectReclamada.length;
-    for (i = 0; i < cantOpciones; i++) {
-      if (selectReclamada[i].value == valorReclamada) {
-          selectReclamada[i].selected = true;
-        }
-    }
+    
+  var valorReclamada = $("#reclamada_hidden").val();
+  if (valorReclamada == "1" ){
+    $("#reclamada option[value='1']").attr("selected",true);
+  }else{
+    $("#reclamada option[value='0']").attr("selected",true);
+  }
 
     var valorEstadoDatos = $("#datos_hidden").val();
-  
-  var selectEstadoDatos = document.getElementById("estado_datos");
-    var cantDatos = selectEstadoDatos.length;
-    for (i = 0; i < cantDatos; i++) {
-      if (selectEstadoDatos[i].value == valorEstadoDatos) {
-          selectEstadoDatos[i].selected = true;
-        }
-    } 
+    if (valorEstadoDatos == "1" ){
+      $("#estado_datos option[value='1']").attr("selected",true);
+    }else{
+      $("#estado_datos option[value='0']").attr("selected",true);
+    }
 });

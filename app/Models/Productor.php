@@ -10,8 +10,8 @@ class Productor extends Model
 
     protected $fillable = [
         'user_id', 'nombre', 'nombre_seo', 'descripcion', 'direccion', 'codigo_postal', 'pais_id', 'provincia_region_id', 'logo', 
-        'persona_contacto', 'email', 'website', 'facebook', 'twitter', 'instagram', 'reclamada', 'latitud', 'longitud', 'estado_datos', 
-        'tipo_suscripcion', 'saldo', 'telefono', 'telefono_opcional',
+        'persona_contacto', 'telefono', 'telefono_opcional', 'email', 'website', 'facebook', 'twitter', 'instagram',
+        'reclamada', 'latitud', 'longitud', 'estado_datos', 'tipo_suscripcion', 'saldo', 
     ];
 
     public function user(){
@@ -38,8 +38,8 @@ class Productor extends Model
         return $this->hasMany('App\Models\Marca');
     }
 
-    public function ofertas_productores(){
-        return $this->hasMany('App\Models\Oferta_Productor');
+    public function ofertas(){
+        return $this->hasMany('App\Models\Oferta');
     }
 
     public function demandas_importadores(){
@@ -56,5 +56,9 @@ class Productor extends Model
 
     public function deducciones_creditos_productores(){
         return $this->hasMany('App\Models\Deduccion_Credito_Productor');
+    }
+
+    public function suscripcion(){
+        return $this->belongsTo('App\Models\Suscripcion');
     }
 }

@@ -20,9 +20,15 @@ class UsuarioController extends Controller
 
     public function create()
     {   
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
 
-        $paises = Pais::all();
-        $provincias = Provincia_Region::all();
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
 
         return view('usuario.create')->with(compact('paises','provincias'));
     }
@@ -55,8 +61,16 @@ class UsuarioController extends Controller
     {
        
        $usuario = User::find($id);
-       $paises = Pais::all();
-       $provincias = Provincia_Region::all();
+       
+       $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
 
        return view('usuario.edit')->with(compact('usuario', 'paises', 'provincias'));
     }

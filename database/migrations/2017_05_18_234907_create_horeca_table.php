@@ -20,16 +20,18 @@ class CreateHorecaTable extends Migration
             $table->integer('provincia_region_id');
             $table->string('logo');
             $table->string('persona_contacto');
+            $table->string('telefono');
+            $table->string('telefono_opcional')->nullable(); 
             $table->string('email')->unique();
             $table->string('website')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('instagram')->nullable();
-            $table->enum('reclamada', ['Si', 'No' ])->default('No');
+            $table->boolean('reclamada');
             $table->double('latitud', 10, 8);
             $table->double('longitud', 10, 8);
-            $table->enum('estado_datos', ['Actualizados', 'Sin Actualizar']);
-            $table->enum('tipo_horeca', ['Hotel', 'Restaurante', 'Cafetería'])->nullable();
+            $table->boolean('estado_datos');
+            $table->enum('tipo_horeca', ['H', 'R', 'C']);
             $table->integer('saldo');
             $table->timestamps();
 
@@ -37,8 +39,8 @@ class CreateHorecaTable extends Migration
       			  ->references('id')->on('user')
       			  ->onDelete('restrict')
       			  ->onUpdate('cascade');
-
-      		$table->foreign('pais_id')
+            
+            $table->foreign('pais_id')
       			  ->references('id')->on('pais')
       			  ->onDelete('restrict')
       			  ->onUpdate('cascade');

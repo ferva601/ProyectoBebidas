@@ -91,8 +91,8 @@
 
 	<div class="form-group">
 		<select name="reclamada" class="form-control">
-			<option value="Si">Si</option>
-			<option value="No">No</option>
+			<option value="0">No</option>
+			<option value="1">Si</option>
 		</select>
 	</div>
 
@@ -108,8 +108,8 @@
 
 	<div class="form-group">
 		<select name="estado_datos" class="form-control">
-			<option value="Actualizados">Actualizados</option>
-			<option value="Sin Actualizar">Sin Actualizar</option>
+			<option value="0">Sin Actualizar</option>
+			<option value="1">Actualizados</option>
 		</select>
 	</div>
 

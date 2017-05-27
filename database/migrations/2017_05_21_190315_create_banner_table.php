@@ -11,7 +11,7 @@ class CreateBannerTable extends Migration
         Schema::create('banner', function (Blueprint $table){
             $table->increments('id');
             $table->integer('creador_id');
-            $table->enum('tipo_creador', ['Productor', 'Importador', 'Distribuidor', 'Horeca']);
+            $table->enum('tipo_creador', ['P', 'I', 'D', 'H', 'U']);
             $table->string('url_banner');
             $table->text('descripcion');
             $table->timestamps();
