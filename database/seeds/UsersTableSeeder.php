@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use App\Models\Pais;
 
 class UsersTableSeeder extends Seeder
 {
@@ -12,18 +13,12 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
+        $faker = faker::create();
 
-			for ($i=0; $i < 50; $i++) {
+			for ($i=0; $i < 50; $i++)
+			{
 
 					// se genera un id al inserta cada registro
-			     $id = \DB::table('pais')->insertGetId(array( 
-			     	'pais' => $faker->country,
-			     	'continente' =>$faker->randomElement(['1', '2', '3', '4', '5' ]), 
-			     
-			     	 ));
-
-
 			     \DB::table('users')->insert(array(
 			           'name' => $faker->unique()->userName,
 			           'email'  => $faker->unique()->freeEmail,
@@ -32,17 +27,20 @@ class UsersTableSeeder extends Seeder
 			           'apellido' => $faker->lastName,
 			           'direccion' => $faker->address,
 			           'codigo_postal' => $faker->postcode,
-			           'pais_id' => $id,
-			           'provincia_region_id' => $faker->randomElement(['Africa', 'America', 'Asia', 'Europa', 'Oceania' ]),
+			           'pais_id' => $pais => Pais::find('pais') 
+			           'provincia_region_id' => 
 			           'estado_datos' => $faker->randomElement(['Actualizados', 'Sin Actualizar']),
-
 			          	'avatar' => '21',
-			           	'created_at' => '',
-			           	'updated_at' => '',
+
 			    ));
-
-
-
 			}
     }
 }
+
+
+ 
+
+            
+        
+
+                        
