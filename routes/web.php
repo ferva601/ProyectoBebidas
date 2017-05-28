@@ -44,4 +44,7 @@ Route::resource('demanda-distribuidor','DemandaDistribucionController');
 
 Route::resource('suscripcion', 'SuscripcionController');
 
+Route::resource('opinion','OpinionController');
+
+Route::resource('banner','BannerController');
 

@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Oferta;
+use App\Models\Opinion;
+use App\Models\User;
 use App\Models\Producto;
 use App\Models\Pais;
 use App\Models\Provincia_Region;
 use DB;
 
-class OfertaController extends Controller
+
+class OpinionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +20,9 @@ class OfertaController extends Controller
      */
     public function index()
     {
-        $ofertas = Oferta::paginate(1);
-        return view('oferta.index')->with(compact('ofertas'));
+
+        $opiniones = Opinion::paginate(1);
+        return view('opinion.index')->with(compact('opiniones'));
     }
 
     /**
@@ -34,17 +37,7 @@ class OfertaController extends Controller
                         ->select('id', 'nombre')
                         ->get();
 
-        $paises = DB::table('pais')
-                        ->orderBy('pais')
-                        ->select('id', 'pais')
-                        ->get();
-
-        $provincias = DB::table('provincia_region')
-                        ->orderBy('provincia')
-                        ->select('id', 'provincia')
-                        ->get();
-
-        return view('oferta.create')->with(compact('productos','paises','provincias'));
+        return view('opinion.create')->with(compact('productos'));
     }
 
     /**
@@ -55,9 +48,9 @@ class OfertaController extends Controller
      */
     public function store(Request $request)
     {
-        $oferta = new Oferta($request->all());
-        $oferta->save();
-        return redirect()->action('OfertaController@index');
+        $opinion = new Opinion($request->all());
+        $opinion->save();
+        return redirect()->action('OpinionController@index');
     }
 
     /**
@@ -68,7 +61,7 @@ class OfertaController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -79,24 +72,15 @@ class OfertaController extends Controller
      */
     public function edit($id)
     {
-        $oferta = Oferta::find($id);
-        
-        $paises = DB::table('pais')
-                        ->orderBy('pais')
-                        ->select('id', 'pais')
-                        ->get();
-
-        $provincias = DB::table('provincia_region')
-                        ->orderBy('provincia')
-                        ->select('id', 'provincia')
-                        ->get();
-
         $productos = DB::table('producto')
                         ->orderBy('nombre')
                         ->select('id', 'nombre')
                         ->get();
+       
+        $opinion = Opinion::find($id);
 
-        return view('oferta.edit')->with(compact('oferta', 'paises', 'provincias', 'productos'));
+
+        return view('opinion.edit')->with(compact('opinion', 'productos'));
     }
 
     /**
@@ -108,11 +92,13 @@ class OfertaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $oferta = Oferta::find($id);
-        $oferta->fill($request->all());
-        $oferta->save();
+        
+        $opinion = Opinion::find($id);
+        $opinion->fill($request->all());
+        $opinion->save();
 
-        return redirect()->action('OfertaController@index');
+        return redirect()->action('OpinionController@index');
+        
     }
 
     /**
@@ -123,9 +109,10 @@ class OfertaController extends Controller
      */
     public function destroy($id)
     {
-        $oferta = Oferta::find($id);
-        $oferta->delete();
+        $opinion = Opinion::find($id);
+        $opinion->delete();
 
-        return redirect()->action('OfertaController@index');
+        return redirect()->action('OpinionController@index');
+
     }
 }

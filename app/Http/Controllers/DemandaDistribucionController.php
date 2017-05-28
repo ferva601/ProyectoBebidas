@@ -29,6 +29,7 @@ class DemandaDistribucionController extends Controller
      */
     public function create()
     {
+
         $productos = DB::table('producto')
                         ->orderBy('nombre')
                         ->select('id', 'nombre')
@@ -78,6 +79,7 @@ class DemandaDistribucionController extends Controller
      */
     public function edit($id)
     {
+
         $demandaDistribuidor = Demanda_Distribuidor::find($id);
 
         $paises = DB::table('pais')
@@ -89,6 +91,7 @@ class DemandaDistribucionController extends Controller
                         ->orderBy('provincia')
                         ->select('id', 'provincia')
                         ->get();
+
         
         $productos = DB::table('producto')
                         ->orderBy('nombre')

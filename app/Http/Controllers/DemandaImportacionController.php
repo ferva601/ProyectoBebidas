@@ -78,6 +78,7 @@ class DemandaImportacionController extends Controller
      */
     public function edit($id)
     {
+
         $demandaImportador = Demanda_Importador::find($id);
         
         $productos = DB::table('producto')
