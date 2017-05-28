@@ -44,3 +44,4 @@ Route::resource('demanda-distribuidor','DemandaDistribucionController');
 
 Route::resource('suscripcion', 'SuscripcionController');
 
+
