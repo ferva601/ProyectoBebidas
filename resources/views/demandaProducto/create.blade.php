@@ -1,11 +1,7 @@
 @extends('plantillas.main')
 @section('title', 'Crear Demanda de Producto')
-@section('content')
+@section('content-left')
 
-	<div class="col-md-4"></div>
-	<div class="col-md-4">
-		@include('demandaProducto.formularios.createForm')
-	</div>
-	<div class="col-md-4"></div>
+	@include('demandaProducto.formularios.createForm')
 	
 @endsection

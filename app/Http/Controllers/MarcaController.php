@@ -7,6 +7,7 @@ use App\Models\Marca;
 use App\Models\Pais;
 use App\Models\Provincia_Region;
 use App\Models\Productor;
+use DB;
 
 class MarcaController extends Controller
 {

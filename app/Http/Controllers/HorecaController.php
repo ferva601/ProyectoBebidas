@@ -7,6 +7,7 @@ use App\Models\Horeca;
 use App\Models\Pais;
 use App\Models\Provincia_Region;
 use App\Models\Telefono_Horeca;
+use DB;
 
 
 class HorecaController extends Controller

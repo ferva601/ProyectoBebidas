@@ -1,12 +1,8 @@
 @extends('plantillas.main')
 @section('title', 'Crear Plan de Crédito')
-@section('content')
+@section('content-left')
 
-@include('plantillas.alertas.AlertasRequest')	
-	<div class="col-md-4"></div>
-	<div class="col-md-4">
-		@include('credito.formularios.createForm')
-	</div>
-	<div class="col-md-4"></div>
+	@include('plantillas.alertas.AlertasRequest')	
+	@include('credito.formularios.createForm')
 	
 @endsection

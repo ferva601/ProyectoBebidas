@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CreditoCreateRequest;
 use App\Http\Requests\CreditoUpdateRequest;
 use App\Models\Credito;
+use DB;
 
 class CreditoController extends Controller
 {

@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Bebida;
+use App\Models\Suscripcion;
 use DB;
 
-class BebidaController extends Controller
+
+class SuscripcionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,13 @@ class BebidaController extends Controller
      */
     public function index()
     {
-       $bebidas=Bebida::paginate(1);
-        return view ('bebida.index')->with (compact('bebidas'));
+        //$suscripciones = Suscripcion::paginate(2);
+        //
+        $suscripciones = DB::table('suscripcion')
+                        ->orderBy('precio')
+                        ->paginate(2);
+                        
+        return view('suscripcion.index')->with(compact('suscripciones'));
     }
 
     /**
@@ -26,7 +32,7 @@ class BebidaController extends Controller
      */
     public function create()
     {
-         return view ('bebida.create');
+        return view('suscripcion.create');
     }
 
     /**
@@ -37,9 +43,10 @@ class BebidaController extends Controller
      */
     public function store(Request $request)
     {
-        $bebida=new Bebida($request->all());
-        $bebida->save();
-        return redirect()->action('BebidaController@index');
+        $suscripcion = new Suscripcion($request->all());
+        $suscripcion->save();
+
+        return redirect()->action('SuscripcionController@index');
     }
 
     /**
@@ -61,9 +68,8 @@ class BebidaController extends Controller
      */
     public function edit($id)
     {
-        $bebida = Bebida::find($id);
-
-        return view('bebida.edit')->with(compact('bebida'));
+        $suscripcion = Suscripcion::find($id);
+        return view('suscripcion.edit')->with(compact('suscripcion'));
     }
 
     /**
@@ -75,11 +81,11 @@ class BebidaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $bebida = Bebida::find($id);
-        $bebida->fill($request->all());
-        $bebida->save();
+        $suscripcion = Suscripcion::find($id);
+        $suscripcion->fill($request->all());
+        $suscripcion->save();
 
-        return redirect()->action('BebidaController@index');
+        return redirect()->action('SuscripcionController@index');
     }
 
     /**
@@ -90,9 +96,9 @@ class BebidaController extends Controller
      */
     public function destroy($id)
     {
-        $bebida = Bebida::find($id);
-        $bebida->delete();
+        $suscripcion = Suscripcion::find($id);
+        $suscripcion->delete();
 
-        return redirect()->action('BebidaController@index');
+        return redirect()->action('SuscripcionController@index');
     }
 }

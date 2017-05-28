@@ -1,31 +1,51 @@
 @extends('plantillas.main')
 @section('title', 'Demanda de Distribuidores')
-@section('content')
-	<table class='table table-condensed table-hover'>
-		<thead>
-			<th>Productor</th>
-			<th>Producto</th>
-			<th>Pís</th>
-			<th>Provincia</th>
-			<th>Status</th>
-		</thead>
-		<tbody>
-			@foreach ($demandaDistribuidores as $demandaDistribuidor)
-				<tr>
-					<td>{{ $demandaDistribuidor->productor->nombre }}</td>
-					<td>{{ $demandaDistribuidor->producto->nombre }}</td>
-					<td>{{ $demandaDistribuidor->pais->pais }}</td>
-					<td>{{ $demandaDistribuidor->provincia_region->provincia }}</td>
-					<td>{{ $demandaDistribuidor->status }}</td>
-					<td> <a class="btn btn-primary" href="{{ route('demanda-distribuidor.edit', $demandaDistribuidor->id ) }}">Modificar</a></td>
-					<td> 
-						{!! Form::open(['route' => ['demanda-distribuidor.destroy', $demandaDistribuidor->id], 'method' => 'DELETE']) !!}
-							{!! Form::submit('Eliminar', ['class' => 'btn btn-danger']) !!}
-						{!! Form::close() !!}
-					</td>
-				</tr>
-			@endforeach
-		</tbody>
-	</table>
+@section('content-left')
+	<div class="box">
+		<div class="box-header">
+			<h3 class="box-title">Demandas de Distribución</h3>
+
+			<div class="box-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+                	<input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+                  	<div class="input-group-btn">
+                    	<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                  	</div>
+                </div>
+            </div>
+		</div>
+
+		<div class="box-body table-responsive no-padding">
+			<table class='table table-condensed table-hover'>
+				<thead>
+					<th><center>Productor</th>
+					<th><center>Producto</th>
+					<th><center>País</th>
+					<th><center>Provincia</th>
+					<th><center>Status</th>
+					<th></th>
+					<th></th>
+				</thead>
+				<tbody>
+					@foreach ($demandaDistribuidores as $demandaDistribuidor)
+						<tr>
+							<td><center>{{ $demandaDistribuidor->productor->nombre }}</td>
+							<td><center>{{ $demandaDistribuidor->producto->nombre }}</td>
+							<td><center>{{ $demandaDistribuidor->pais->pais }}</td>
+							<td><center>{{ $demandaDistribuidor->provincia_region->provincia }}</td>
+							<td><center>{{ $demandaDistribuidor->status }}</td>
+							<td><center> <a class="btn btn-primary" href="{{ route('demanda-distribuidor.edit', $demandaDistribuidor->id ) }}"><i class="fa fa-edit"></i></a></td>
+							<td><center> 
+								{!! Form::open(['route' => ['demanda-distribuidor.destroy', $demandaDistribuidor->id], 'method' => 'DELETE']) !!}
+									<button type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+								{!! Form::close() !!}
+							</td>
+						</tr>
+					@endforeach
+				</tbody>
+			</table>
+		</div>
+	</div>
+
 	{!! $demandaDistribuidores->render() !!}
 @endsection

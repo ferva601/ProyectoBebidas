@@ -1,13 +1,9 @@
 @extends('plantillas.main')
 @section('title', 'Modificar Demanda de Producto')
-@section('content')
+@section('content-left')
 	
 	{!! Html::script('js/demandaProductos/edit.js') !!}
 
-	<div class="col-md-4"></div>
-	<div class="col-md-4">
-		@include('demandaProducto.formularios.editForm')
-	</div>
-	<div class="col-md-4"></div>
+	@include('demandaProducto.formularios.editForm')
 	
 @endsection

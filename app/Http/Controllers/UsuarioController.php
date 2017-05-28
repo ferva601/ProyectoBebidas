@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Pais;
 use App\Models\Provincia_Region;
+use DB;
 
 class UsuarioController extends Controller
 {
@@ -13,7 +14,7 @@ class UsuarioController extends Controller
     public function index()
     {
 
-        $usuarios = User::paginate(1);
+        $usuarios = User::paginate(5);
         return view('usuario.index')->with(compact('usuarios'));
 
     }

@@ -13,7 +13,7 @@
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('plantillas/plantilla');
 });
 
 Route::resource('productor','ProductorController');
@@ -41,4 +41,6 @@ Route::resource('demanda-producto','DemandaProductoController');
 Route::resource('demanda-importador','DemandaImportacionController');
 
 Route::resource('demanda-distribuidor','DemandaDistribucionController');
+
+Route::resource('suscripcion', 'SuscripcionController');
 

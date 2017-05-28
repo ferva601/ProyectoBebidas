@@ -91,7 +91,12 @@ class OfertaController extends Controller
                         ->select('id', 'provincia')
                         ->get();
 
-        return view('oferta.edit')->with(compact('oferta', 'paises', 'provincias'));
+        $productos = DB::table('producto')
+                        ->orderBy('nombre')
+                        ->select('id', 'nombre')
+                        ->get();
+
+        return view('oferta.edit')->with(compact('oferta', 'paises', 'provincias', 'productos'));
     }
 
     /**

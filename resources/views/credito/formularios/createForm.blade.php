@@ -6,7 +6,7 @@
 
 		<div class="form-group">
 			{!! Form::label('cantidad_creditos', 'Cantidad de Créditos') !!}
-			{!! Form::text('cantidad_creditos', null, ['class' => 'form-control', 'placeholder' => 'Cantidad de Créditos'] ) !!}
+			{!! Form::number('cantidad_creditos', null, ['class' => 'form-control', 'placeholder' => 'Cantidad de Créditos'] ) !!}
 		</div>
 
 		<div class="form-group">

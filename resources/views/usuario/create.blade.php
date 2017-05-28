@@ -1,10 +1,11 @@
 @extends('plantillas.main')
 @section('title', 'Crear Usuario')
-@section('content')
-	<div class="col-md-4"></div>
-	<div class="col-md-4">
-		@include('usuario.formularios.createForm')
-	</div>
-	<div class="col-md-4"></div>
+
+@section('header-content')
+	<h3><b>Agregar Nuevo Usuario</b>
+@endsection
+@section('content-left')
 	
+		@include('usuario.formularios.createForm')
+
 @endsection

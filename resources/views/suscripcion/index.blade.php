@@ -1,9 +1,9 @@
 @extends('plantillas.main')
-@section('title', 'Listar-marcas')
+@section('title', 'Planes de Suscripción')
 @section('content-left')
 	<div class="box">
 		<div class="box-header">
-			<h3 class="box-title">Marcas</h3>
+			<h3 class="box-title">Planes de Suscripción</h3>
 
 			<div class="box-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -18,34 +18,29 @@
 		<div class="box-body table-responsive no-padding">
 			<table class='table table-condensed table-hover'>
 				<thead>
-					<th><center>Productor</th>
-					<th><center>Nombre</th>
+					<th><center>Plan</th>
 					<th><center>Descripcion</th>
-					<th><center>Reclamada</th>
+					<th><center>Precio</th>
 					<th></th>
 					<th></th>
 				</thead>
-
 				<tbody>
-					@foreach ($listas as $lista)			
-					<tr>
-						<td><center>{{ $lista->productor->nombre}}</td>
-						<td><center>{{ $lista->nombre }}</td>
-						<td><center>{{ $lista->descripcion }}</td>
-						<td><center>{{ $lista->reclamada }}</td>
-						<td><center> <a class="btn btn-primary" href="{{ route('marca.edit', $lista->id ) }}"><i class="fa fa-edit"></i></a></td>
-						<td><center> 
-							{!! Form::open(['route' => ['marca.destroy', $lista->id], 'method' => 'DELETE']) !!}
-								<button type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
-							{!! Form::close() !!}
-						</td>
-					</tr>
-
+					@foreach ($suscripciones as $suscripcion)
+						<tr>
+							<td><center>{{ $suscripcion->suscripcion }}</td>
+							<td><center>{{ $suscripcion->descripcion }}</td>
+							<td><center>{{ $suscripcion->precio }}</td>
+							<td><center><a class="btn btn-primary" href="{{ route('suscripcion.edit', $suscripcion->id ) }}"><i class="fa fa-edit"></i></a></td>
+							<td><center> 
+								{!! Form::open(['route' => ['suscripcion.destroy', $suscripcion->id], 'method' => 'DELETE']) !!}
+									<button type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+								{!! Form::close() !!}
+							</td>
+						</tr>
 					@endforeach
 				</tbody>
 			</table>
 		</div>
 	</div>
-	{!! $listas->render() !!}
-
+	{!! $suscripciones->render() !!}
 @endsection
