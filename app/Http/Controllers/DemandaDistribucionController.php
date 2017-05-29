@@ -11,11 +11,11 @@ use DB;
 
 class DemandaDistribucionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $demandaDistribuidores = Demanda_Distribuidor::paginate(1);

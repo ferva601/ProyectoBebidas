@@ -12,7 +12,11 @@ use DB;
 
 class ProductoController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $productos = Producto::paginate(1);
@@ -46,7 +50,13 @@ class ProductoController extends Controller
 
     public function store(Request $request)
     {
+        $file = $request->file('imagen');
+        $nombre = 'producto_'.time().'.'.$file->getClientOriginalExtension();
+        $path = public_path() . '/imagenes/productos';
+        $file->move($path, $nombre);
+
         $producto = new Producto($request->all());
+        $producto->imagen = $nombre;
         $producto->save();
         return redirect()->action('ProductoController@index');
     }

@@ -7,10 +7,15 @@ use App\Models\Productor;
 use App\Models\Pais;
 use App\Models\Telefono_Productor;
 use DB;
-
+use Auth;
 
 class ProductorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $productores = Productor::paginate(1);
@@ -34,7 +39,14 @@ class ProductorController extends Controller
 
     public function store(Request $request)
     {
+        $file = $request->file('logo');
+        $nombre = 'productor_'.time().'.'.$file->getClientOriginalExtension();
+        $path = public_path() . '/imagenes/productores';
+        $file->move($path, $nombre);
+
         $productor = new Productor($request->all());
+        $productor->logo = $nombre;
+        $productor->user_id = Auth::user()->id;
         $productor->save();
 
         return redirect()->action('ProductorController@index');  

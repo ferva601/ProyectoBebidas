@@ -1,6 +1,5 @@
-{!! Form::open(['route' => 'horeca.store', 'method' => 'POST']) !!}
+{!! Form::open(['route' => 'horeca.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
-	{!! Form::hidden('user_id', '1') !!}
 	{!! Form::hidden('saldo', '0') !!}
 
 	<div class="form-group">
@@ -42,11 +41,6 @@
 				<option value="{{ $provincia->id }}">{{ $provincia->provincia }}</option>
 			@endforeach
 		</select>
-	</div>
-
-	<div class="form-group">
-		{!! Form::label('logo', 'Logotipo / Avatar') !!}
-		{!! Form::file('logo', ['class' => 'form-control'] ) !!}
 	</div>
 
 	<div class="form-group">
@@ -120,6 +114,11 @@
 			<option value="R">Restaurant</option>
 			<option value="C">Cafetería</option>
 		</select>
+	</div>
+
+	<div class="form-group">
+		{!! Form::label('logo', 'Logotipo / Avatar') !!}
+		{!! Form::file('logo', ['class' => 'form-control'] ) !!}
 	</div>
 
 	<div class="form-group">

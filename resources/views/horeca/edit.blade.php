@@ -5,6 +5,5 @@
 	{!! Html::script('js/horecas/edit.js') !!}
 
 		@include('horeca.formularios.editForm')
-	>
 	
 @endsection

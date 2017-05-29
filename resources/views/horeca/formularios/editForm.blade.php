@@ -1,6 +1,5 @@
 {!! Form::open(['route' => ['horeca.update', $horeca->id], 'method' => 'PUT']) !!}
 	
-	{!! Form::hidden('user_id', '1') !!}
 	{!! Form::hidden('saldo', $horeca->saldo) !!}
 	{!! Form::hidden('reclamada_hidden', $horeca->reclamada, ['id' => 'reclamada_hidden']) !!}
 	{!! Form::hidden('pais_hidden', $horeca->pais_id, ['id' => 'pais_hidden']) !!}
@@ -47,11 +46,6 @@
 				<option value="{{ $provincia->id }}">{{ $provincia->provincia }}</option>
 			@endforeach
 		</select>
-	</div>
-
-	<div class="form-group">
-		{!! Form::label('logo', 'Logotipo / Avatar') !!}
-		{!! Form::file('logo', ['class' => 'form-control'] ) !!}
 	</div>
 
 	<div class="form-group">

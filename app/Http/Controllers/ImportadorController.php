@@ -8,14 +8,15 @@ use App\Models\User;
 use App\Models\Pais;
 use App\Models\Provincia_Region;
 use DB;
+use Auth;
 
 class ImportadorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $importadores = Importador::paginate(1);
@@ -50,7 +51,14 @@ class ImportadorController extends Controller
      */
     public function store(Request $request)
     {
+        $file = $request->file('logo');
+        $nombre = 'importador_'.time().'.'.$file->getClientOriginalExtension();
+        $path = public_path() . '/imagenes/importadores';
+        $file->move($path, $nombre);
+
         $importador = new Importador($request->all());
+        $importador->logo = $nombre;
+        $importador->user_id = Auth::user()->id;
         $importador->save();
         return redirect()->action('ImportadorController@index');
     }

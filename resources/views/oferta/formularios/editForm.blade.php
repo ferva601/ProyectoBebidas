@@ -7,6 +7,7 @@
 	{!! Form::hidden('visible_horecas', '1') !!}
 
 	{!! Form::hidden('producto_hidden', $oferta->producto_id, ['id' => 'producto_hidden']) !!}
+	{!! Form::hidden('envio_hidden', $oferta->envio, ['id' => 'envio_hidden']) !!}
 
 	<div class="form-group">
 		{!! Form::label('producto_id', 'Seleccione el producto') !!}
@@ -54,8 +55,8 @@
 
 	<div class="form-group">
 		<select name="envio" class="form-control" id="envio">
+			<option value="0">No</option>
 			<option value="1">Si</option>
-			<option value="2">No</option>
 		</select>
 	</div>
 

@@ -9,4 +9,11 @@ $(document).ready(function() {
           selectProductos[i].selected = true;
         }
     }
+
+    var valorEnvio = $("#envio_hidden").val();
+    if (valorEnvio == "1" ){
+      $("#envio option[value='1']").attr("selected",true);
+    }else{
+      $("#envio option[value='0']").attr("selected",true);
+    }
 });

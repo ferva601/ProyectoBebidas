@@ -10,6 +10,10 @@ use DB;
 
 class UsuarioController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
@@ -36,7 +40,13 @@ class UsuarioController extends Controller
 
     public function store(Request $request)
     {
+        $file = $request->file('avatar');
+        $nombre = 'usuario_'.time().'.'.$file->getClientOriginalExtension();
+        $path = public_path() . '/imagenes/usuarios';
+        $file->move($path, $nombre);
+
         $usuario = new User($request->all());
+        $usuario->avatar = $nombre;
         $usuario->save();
         return redirect()->action('UsuarioController@index');
     }

@@ -1,4 +1,4 @@
-{!! Form::open(['route'=>'marca.store','method'=>'POST']) !!}
+{!! Form::open(['route'=>'marca.store', 'method'=>'POST', 'enctype' => 'multipart/form-data']) !!}
 	
 	{!! Form::hidden ('creador_id','1') !!}
 	{!! Form::hidden ('tipo_creador','P') !!}
@@ -16,11 +16,6 @@
 	<div class="form-group">
 		{!! Form::label ('descripcion','Descripcion') !!}
 		{!! Form::text ('descripcion',null,['class'=>'form-control','placeholder'=>'Ej. ', 'required']) !!}
-	</div>
-
-	<div class="form-group">
-		{!! Form::label ('logo', 'Logo') !!}
-		{!! Form::file ('logo', ['class'=>'form-control','required']) !!}
 	</div>
 
 	<div class="form-group">
@@ -55,6 +50,11 @@
 				<option value="{{ $productor->id }}">{{ $productor->nombre }}</option>
 			@endforeach
 		</select>
+	</div>
+
+	<div class="form-group">
+		{!! Form::label ('logo', 'Logo') !!}
+		{!! Form::file ('logo', ['class'=>'form-control','required']) !!}
 	</div>
 
 	{!! Form::submit ('Agregar',['class'=>'btn btn-primary']) !!}

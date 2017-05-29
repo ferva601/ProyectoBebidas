@@ -47,11 +47,6 @@
 			@endforeach
 		</select>
 	</div>
-
-	<div class="form-group">
-		{!! Form::label('logo', 'Logo / Avatar') !!}
-		{!! Form::file('logo', ['class' => 'form-control', 'required'] ) !!}
-	</div>
 	
 	<div class="form-group">
 		{!! Form::label('persona_contacto', 'Persona de Contacto') !!}

@@ -1,4 +1,4 @@
-{!! Form::open(['route' => 'producto.store', 'method' => 'POST']) !!}
+{!! Form::open(['route' => 'producto.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 		<div class="form-group">
 			{!! Form::label('nombre', 'Nombre') !!}
 			{!! Form::text('nombre', null, ['class' => 'form-control', 'required', 'placeholder' => 'Nombre del Producto'] ) !!}
@@ -48,18 +48,17 @@
 		</div>
 		
 		<div class="form-group">
+			{!! Form::label('ano_produccion', 'Imagen') !!}
+			{!! Form::text('ano_produccion', null, ['class' => 'form-control', 'required', 'placeholder' => 'Año de Producción'] ) !!}
+		</div>
+		
+		<div class="form-group">
 			{!! Form::label('imagen', 'Imagen') !!}
 			{!! Form::file('imagen', ['class' => 'form-control', 'required'] ) !!}
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('ano_produccion', 'Imagen') !!}
-			{!! Form::text('ano_produccion', null, ['class' => 'form-control', 'required', 'placeholder' => 'Año de Producción'] ) !!}
-		</div>
-
-		<div class="form-group">
 			{!! Form::submit('Registrar', ['class' => 'btn btn-primary']) !!}
 		</div>
-		
 		
 	{!! Form::close() !!}

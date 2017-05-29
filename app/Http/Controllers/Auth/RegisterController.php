@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -66,6 +66,16 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'nombre' => $data['nombre'],
+            'apellido' => $data['apellido'],
+            'direccion' => $data['direccion'], 
+            'telefono' => $data['telefono'], 
+            'telefono_opcional' => $data['telefono_opcional'],
+            'codigo_postal' => $data['codigo_postal'],
+            'pais_id' => $data['pais_id'],
+            'provincia_region_id' => $data['provincia_region_id'],
+            'avatar' => $data['avatar'],
+            'estado_datos' => $data['estado_datos'],
         ]);
     }
 }

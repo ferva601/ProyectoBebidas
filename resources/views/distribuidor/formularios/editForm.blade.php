@@ -1,6 +1,5 @@
 {!! Form::open(['route' => ['distribuidor.update', $distribuidor->id], 'method' => 'PUT']) !!}
 	
-	{!! Form::hidden('user_id', '1') !!}
 	{!! Form::hidden('saldo', '0') !!}
 	{!! Form::hidden('pais_hidden', $distribuidor->pais_id, ['id' => 'pais_hidden']) !!}
 	{!! Form::hidden('provincia_hidden', $distribuidor->provincia_region_id, ['id' => 'provincia_hidden']) !!}
@@ -46,11 +45,6 @@
 				<option value="{{ $provincia->id }}">{{ $provincia->provincia }}</option>
 			@endforeach
 		</select>
-	</div>
-
-	<div class="form-group">
-		{!! Form::label('logo', 'Logo / Avatar') !!}
-		{!! Form::file('logo', ['class' => 'form-control', 'required'] ) !!}
 	</div>
 	
 	<div class="form-group">

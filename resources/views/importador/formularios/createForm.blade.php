@@ -1,6 +1,5 @@
-{!! Form::open(['route' => 'importador.store', 'method' => 'POST']) !!}
-	
-	{!! Form::hidden('user_id', '1') !!}
+{!! Form::open(['route' => 'importador.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+
 	{!! Form::hidden('saldo', '0') !!}
 
 	<div class="form-group">
@@ -42,11 +41,6 @@
 				<option value="{{ $provincia->id }}">{{ $provincia->provincia }}</option>
 			@endforeach
 		</select>
-	</div>
-
-	<div class="form-group">
-		{!! Form::label('logo', 'Logo / Avatar') !!}
-		{!! Form::file('logo', ['class' => 'form-control', 'required'] ) !!}
 	</div>
 	
 	<div class="form-group">
@@ -116,6 +110,11 @@
 	<div class="form-group">
 		{!! Form::label('tipo_suscripcion', 'Tipo de Suscripción') !!}
 		{!! Form::text('tipo_suscripcion', null, ['class' => 'form-control', 'placeholder' => 'Tipo de Suscripción'] ) !!}
+	</div>
+
+	<div class="form-group">
+		{!! Form::label('logo', 'Logo / Avatar') !!}
+		{!! Form::file('logo', ['class' => 'form-control', 'required'] ) !!}
 	</div>
 
 	<div class="form-group">

@@ -2,7 +2,7 @@
 
    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
       <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-      <span class="hidden-xs">Luisanaelena Marín</span>
+      <span class="hidden-xs">{{ Auth::User()->name }}</span>
    </a>
 
    <ul class="dropdown-menu">
@@ -10,8 +10,8 @@
       <li class="user-header">
          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
          <p>
-            Luisanaelena Marín - Desarrollador Web
-            <small>Miembro desde Nov. 2016</small>
+            {{ Auth::User()->nombre }} {{ Auth::User()->apellido }}
+            <small>Miembro desde {{ Auth::User()->created_at->format('d-m-Y') }}</small>
          </p>
       </li>
 
@@ -37,9 +37,14 @@
             <a href="#" class="btn btn-default btn-flat">Perfil</a>
          </div>
          <div class="pull-right">
-            <a href="#" class="btn btn-default btn-flat">Salir</a>
+            <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Salir</a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
          </div>
       </li>
       <!-- FIN DEL MENU DEL FOOTER DE CUENTA DE USUARIO-->
    </ul>
 </li>
+

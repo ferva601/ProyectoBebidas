@@ -7,14 +7,15 @@ use App\Models\Distribuidor;
 use App\Models\Pais;
 use App\Models\Provincia_Region;
 use DB;
+use Auth;
 
 class DistribuidorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $distribuidores = Distribuidor::paginate(1);
@@ -49,7 +50,14 @@ class DistribuidorController extends Controller
      */
     public function store(Request $request)
     {
+        $file = $request->file('logo');
+        $nombre = 'distribuidor_'.time().'.'.$file->getClientOriginalExtension();
+        $path = public_path() . '/imagenes/distribuidores';
+        $file->move($path, $nombre);
+
         $distribuidor = new Distribuidor($request->all());
+        $distribuidor->logo = $nombre;
+        $distribuidor->user_id = Auth::user()->id;
         $distribuidor->save();
         return redirect()->action('DistribuidorController@index');
     }

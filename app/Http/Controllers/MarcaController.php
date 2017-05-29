@@ -11,6 +11,11 @@ use DB;
 
 class MarcaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $listas=Marca::paginate(1);
@@ -40,7 +45,14 @@ class MarcaController extends Controller
 
     public function store(Request $request)
     {
+        $file = $request->file('logo');
+        $nombre = 'marca_'.time().'.'.$file->getClientOriginalExtension();
+        $path = public_path() . '/imagenes/marcas';
+        $file->move($path, $nombre);
+
+
         $marca=new Marca($request->all());
+        $marca->logo = $nombre;
         $marca->save();
         return redirect()->action('MarcaController@index');
     }

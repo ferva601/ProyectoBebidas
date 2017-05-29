@@ -8,15 +8,17 @@ use App\Models\Pais;
 use App\Models\Provincia_Region;
 use App\Models\Telefono_Horeca;
 use DB;
+use Storage;
+use Auth;
 
 
 class HorecaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $horecas = Horeca::paginate(1);
@@ -51,7 +53,14 @@ class HorecaController extends Controller
      */
     public function store(Request $request)
     {
+        $file = $request->file('logo');
+        $nombre = 'horeca_'.time().'.'.$file->getClientOriginalExtension();
+        $path = public_path() . '/imagenes/horecas';
+        $file->move($path, $nombre);
+
         $horeca = new Horeca($request->all());
+        $horeca->logo = $nombre;
+        $horeca->user_id = Auth::user()->id;
         $horeca->save();
 
         /*$telefono = new Telefono_Horeca();

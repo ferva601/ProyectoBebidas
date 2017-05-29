@@ -13,7 +13,7 @@
 
 
 Route::get('/', function () {
-    return view('plantillas/plantilla');
+    return redirect()->action('UsuarioController@index');
 });
 
 Route::resource('productor','ProductorController');
@@ -48,3 +48,7 @@ Route::resource('opinion','OpinionController');
 
 Route::resource('banner','BannerController');
 
+
+Auth::routes();
+
+Route::get('/home', 'UsuarioController@index')->name('home');

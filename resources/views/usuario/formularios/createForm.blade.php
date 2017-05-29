@@ -1,4 +1,4 @@
-{!! Form::open(['route' => 'usuario.store', 'method' => 'POST']) !!}
+{!! Form::open(['route' => 'usuario.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
 		<div class="form-group">
 			{!! Form::label('name', 'Nombre de Usuario') !!}
