@@ -16,13 +16,29 @@ Route::get('/', function () {
     return redirect()->action('UsuarioController@index');
 });
 
+//  RUTAS PARA LOS USUARIOS
+Route::get('usuario/{id}/mis-productores', 'UsuarioController@ver_productores')->name('usuario.productores');
+Route::get('usuario/{id}/mis-importadores', 'UsuarioController@ver_importadores')->name('usuario.importadores');
+Route::get('usuario/{id}/mis-distribuidores', 'UsuarioController@ver_distribuidores')->name('usuario.distribuidores');
+Route::get('usuario/{id}/mis-horecas', 'UsuarioController@ver_horecas')->name('usuario.horecas');
+
+Route::get('usuario/registrar-productor', 'UsuarioController@registrar_productor')->name('usuario.registrar-productor');
+Route::get('usuario/registrar-importador', 'UsuarioController@registrar_importador')->name('usuario.registrar-importador');
+Route::get('usuario/registrar-distribuidor', 'UsuarioController@registrar_distribuidor')->name('usuario.registrar-distribuidor');
+Route::get('usuario/registrar-horeca', 'UsuarioController@registrar_horeca')->name('usuario.registrar-horeca');
+
+Route::resource('usuario','UsuarioController');
+
+// ./RUTAS PARA LOS USUARIOS
+
 Route::resource('productor','ProductorController');
+Route::get('productor/ingresar/{id}', 'ProductorController@ingresar')->name('productor.ingresar');
 
 Route::resource('producto','ProductoController');
 
 Route::resource('marca','MarcaController');
 
-Route::resource('usuario','UsuarioController');
+
 
 Route::resource('credito','CreditoController');
 
@@ -46,9 +62,7 @@ Route::resource('suscripcion', 'SuscripcionController');
 
 Route::resource('opinion','OpinionController');
 
-Route::resource('banner','BannerController');
-
 
 Auth::routes();
 
-Route::get('/home', 'UsuarioController@index')->name('home');
+Route::get('/home', 'UsuarioController@index')->name('dashboard');

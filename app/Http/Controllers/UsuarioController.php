@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Pais;
 use App\Models\Provincia_Region;
 use DB;
+use Auth;
 
 class UsuarioController extends Controller
 {
@@ -17,9 +18,24 @@ class UsuarioController extends Controller
 
     public function index()
     {
+        $user = User::find(Auth::user()->id);
+        $cont=0;
+        $cont2=0;
+        $cont3=0;
+        $cont4=0;
 
-        $usuarios = User::paginate(5);
-        return view('usuario.index')->with(compact('usuarios'));
+        foreach($user->productores as $productor)
+            $cont++;
+        foreach($user->importadores as $importador)
+            $cont2++;
+        foreach($user->distribuidores as $distribuidor)
+            $cont3++;
+        foreach($user->horecas as $horeca)
+            $cont4++;
+
+        return view('usuario.index')->with(compact('user', 'cont', 'cont2', 'cont3', 'cont4'));
+        //$usuarios = User::paginate(5);
+        //return view('usuario.index')->with(compact('usuarios'));
 
     }
 
@@ -59,7 +75,7 @@ class UsuarioController extends Controller
      */
     public function show($id)
     {
-
+        
     }
 
     /**
@@ -117,5 +133,125 @@ class UsuarioController extends Controller
 
         return redirect()->action('UsuarioController@index');
 
+    }
+
+    //FUNCION QUE PERMITE VER LOS PRODUCTORES PERTENECIENTES A U USUARIO
+    public function ver_productores($id){
+        $usuario = User::find($id);
+
+        $productores = DB::table('productor')
+                        ->orderBy('nombre')
+                        ->select('id', 'nombre', 'telefono', 'email', 'saldo')
+                        ->where('user_id', $id)
+                        ->paginate(8);
+
+        return view('usuario.listados.productores')->with(compact('usuario', 'productores'));
+    }
+
+    //FUNCION QUE PERMITE VER LOS IMPORTADORES PERTENECIENTES A U USUARIO
+    public function ver_importadores($id){
+        $usuario = User::find($id);
+
+        $importadores = DB::table('importador')
+                        ->orderBy('nombre')
+                        ->select('id', 'nombre', 'telefono', 'email', 'saldo')
+                        ->where('user_id', $id)
+                        ->paginate(8);
+
+        return view('usuario.listados.importadores')->with(compact('usuario', 'importadores'));
+    }
+
+    //FUNCION QUE PERMITE VER LOS DISTRIBUIDORES PERTENECIENTES A U USUARIO
+    public function ver_distribuidores($id){
+        $usuario = User::find($id);
+
+        $distribuidores = DB::table('distribuidor')
+                        ->orderBy('nombre')
+                        ->select('id', 'nombre', 'telefono', 'email', 'saldo')
+                        ->where('user_id', $id)
+                        ->paginate(8);
+
+        return view('usuario.listados.distribuidores')->with(compact('usuario', 'distribuidores'));
+    }
+
+    //FUNCION QUE PERMITE VER LOS HORECAS PERTENECIENTES A U USUARIO
+    public function ver_horecas($id){
+        $usuario = User::find($id);
+
+        $horecas = DB::table('horeca')
+                        ->orderBy('nombre')
+                        ->select('id', 'nombre', 'telefono', 'email', 'saldo')
+                        ->where('user_id', $id)
+                        ->paginate(8);
+
+        return view('usuario.listados.horecas')->with(compact('usuario', 'horecas'));
+    }
+
+    //FUNCION QUE LE PERMITE AL USUARIO REGISTRAR UN PRODUCTOR DE SU PROPIEDAD
+    public function registrar_productor(){
+        $perfil = 'P';
+
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
+
+        return view('usuario.registrarPerfil')->with(compact('perfil', 'paises', 'provincias'));
+    }
+
+    //FUNCION QUE LE PERMITE AL USUARIO REGISTRAR UN IMPORTADOR DE SU PROPIEDAD
+    public function registrar_importador(){
+        $perfil = 'I';
+
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
+
+        return view('usuario.registrarPerfil')->with(compact('perfil', 'paises', 'provincias'));
+    }
+
+    //FUNCION QUE LE PERMITE AL USUARIO REGISTRAR UN DISTRIBUIDOR DE SU PROPIEDAD
+    public function registrar_distribuidor(){
+        $perfil = 'D';
+
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
+
+        return view('usuario.registrarPerfil')->with(compact('perfil', 'paises', 'provincias'));
+    }
+
+    //FUNCION QUE LE PERMITE AL USUARIO REGISTRAR UN HORECA DE SU PROPIEDAD
+    public function registrar_horeca(){
+        $perfil = 'H';
+
+        $paises = DB::table('pais')
+                        ->orderBy('pais')
+                        ->select('id', 'pais')
+                        ->get();
+
+        $provincias = DB::table('provincia_region')
+                        ->orderBy('provincia')
+                        ->select('id', 'provincia')
+                        ->get();
+
+        return view('usuario.registrarPerfil')->with(compact('perfil', 'paises', 'provincias'));
     }
 }

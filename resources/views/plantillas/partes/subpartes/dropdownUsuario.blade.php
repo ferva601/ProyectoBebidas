@@ -1,14 +1,14 @@
 <li class="dropdown user user-menu">
 
    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-      <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+      <img src="imagenes/usuarios/{{Auth::user()->avatar}}" class="user-image" alt="User Image">
       <span class="hidden-xs">{{ Auth::User()->name }}</span>
    </a>
 
    <ul class="dropdown-menu">
       <!-- User image -->
       <li class="user-header">
-         <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+         <img src="imagenes/usuarios/{{Auth::user()->avatar}}" class="img-circle" alt="{{ Auth::user()->avatar }}">
          <p>
             {{ Auth::User()->nombre }} {{ Auth::User()->apellido }}
             <small>Miembro desde {{ Auth::User()->created_at->format('d-m-Y') }}</small>

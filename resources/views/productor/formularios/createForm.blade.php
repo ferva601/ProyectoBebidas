@@ -1,7 +1,4 @@
-{!! Form::open(['route' => 'productor.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-
 	{!! Form::hidden('saldo', '0') !!}
-
 	<div class="form-group">
 		{!! Form::label('nombre', 'Nombre') !!}
 		{!! Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Nombre'] ) !!}
@@ -120,5 +117,3 @@
 	<div class="form-group">
 		{!! Form::submit('Agregar Usuario', ['class' => 'btn btn-primary']) !!}
 	</div>
-		
-{!! Form::close() !!}

@@ -10,9 +10,9 @@
 		{!! Html::style('font-awesome/css/font-awesome.css') !!}
 		{!! Html::script('bootstrap/js/jquery-3.2.1.min.js') !!}
 		{!! Html::style('ionicons/css/ionicons.min.css') !!}
-	    {!! Html::style('archivosLTE/dist/css/AdminLTE.min.css') !!}
-	    {!! Html::style('archivosLTE/dist/css/skins/_all-skins.min.css') !!}
-	    {!! Html::style('archivosLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') !!}
+	   {!! Html::style('archivosLTE/dist/css/AdminLTE.min.css') !!}
+	   {!! Html::style('archivosLTE/dist/css/skins/_all-skins.min.css') !!}
+	  {!! Html::style('archivosLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') !!}
 	</head>
 
 	<body class="hold-transition skin-blue sidebar-mini">
@@ -22,7 +22,7 @@
 			    <!-- Logo -->
 			    <a href="index2.html" class="logo">
 			    	<!-- mini logo for sidebar mini 50x50 pixels -->
-			      	<span class="logo-mini"><b>t</b>d</span>
+			      	<span class="logo-mini"><b>T</b>D</span>
 			      	<!-- logo for regular state and mobile devices -->
 			      	<span class="logo-lg"><b>Too</b>Drinks</span>
 			    </a>
@@ -35,7 +35,7 @@
  			 <aside class="main-sidebar">
     			<!-- sidebar: style can be found in sidebar.less -->
     			<section class="sidebar">
-      				@include('plantillas.partes.sidebar')
+      				@include('plantillas.productor.partes.sidebarProductor')
     			</section>
     			<!-- /.sidebar -->
   			</aside>
@@ -52,18 +52,18 @@
       				<!-- Small boxes (Stat box) -->
       				<div class="row">
                 		@yield('items')	
-     				</div>
+     			  	</div>
     
       				<!-- Main row -->
       				<div class="row">
         				<!-- Left col -->
-        				<section class="col-lg-7 connectedSortable">
+        				<section class="col-lg-8 connectedSortable">
 				         	@yield('content-left')
 				        </section>
         				<!-- /.Left col -->
         				
         				<!-- right col (We are only adding the ID to make the widgets sortable)-->
-        				<section class="col-lg-5 connectedSortable">
+        				<section class="col-lg-4 connectedSortable">
 							@include('plantillas.partes.content-right')
         				</section>
         				<!-- right col -->
@@ -73,8 +73,6 @@
     			<!-- /.content -->
   			</div>
   			<!-- /.content-wrapper -->
-  		
-  			
 	    </div>
      
 	    {!! Html::script('bootstrap/js/jquery-3.2.1.min.js') !!}

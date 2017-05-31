@@ -127,12 +127,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            {!! Form::label('avatar', 'Imagen / Avatar', ['class' => 'col-md-4 control-label']) !!}
-                            <div class="col-md-6">
-                                 {!! Form::file('avatar', ['class' => 'form-control', 'required'] ) !!}
-                            </div>
-                        </div>
+                        {!! Form::hidden('avatar', 'icono-usuario.jpg') !!}
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

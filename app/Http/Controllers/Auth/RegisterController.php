@@ -74,7 +74,7 @@ class RegisterController extends Controller
             'codigo_postal' => $data['codigo_postal'],
             'pais_id' => $data['pais_id'],
             'provincia_region_id' => $data['provincia_region_id'],
-            'avatar' => $data['avatar'],
+            'avatar' => 'usuario-icono.jpg',
             'estado_datos' => $data['estado_datos'],
         ]);
     }

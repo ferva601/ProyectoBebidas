@@ -60,7 +60,12 @@ class ImportadorController extends Controller
         $importador->logo = $nombre;
         $importador->user_id = Auth::user()->id;
         $importador->save();
-        return redirect()->action('ImportadorController@index');
+
+        if ($request->who == 'U'){
+             return redirect()->action('UsuarioController@index'); 
+        }elseif ($request->who == 'I'){
+            return redirect()->action('ImportadorController@index');
+        }
     }
 
     /**
@@ -71,7 +76,39 @@ class ImportadorController extends Controller
      */
     public function show($id)
     {
-        
+        $importador = Importador::find($id);
+        $cont=0;
+        $cont2=0;
+        $cont3=0;
+        $cont4=0;
+
+        foreach($importador->marcas as $marca)
+            $cont++;
+        foreach($importador->distribuidores as $distribuidor)
+            $cont2++;
+
+        $ofertas = DB::table('oferta')
+                        ->orderBy('titulo')
+                        ->select('id')
+                        ->where([
+                            ['tipo_creador', 'I'],
+                            ['creador_id', $id],
+                        ])->get();
+
+        foreach($ofertas as $oferta)
+            $cont3++;
+
+        $demandas = DB::table('demanda_producto')
+                        ->select('id')
+                        ->where([
+                            ['tipo_creador', 'I'],
+                            ['creador_id', $id],
+                        ])->get();
+
+        foreach($demandas as $demanda)
+            $cont4++;
+
+        return view('importador.show')->with(compact('importador', 'cont', 'cont2', 'cont3', 'cont4'));
     }
 
     /**

@@ -1,4 +1,3 @@
-{!! Form::open(['route' => 'distribuidor.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
 	{!! Form::hidden('saldo', '0') !!}
 
@@ -121,4 +120,3 @@
 		{!! Form::submit('Agregar Distribuidor', ['class' => 'btn btn-primary']) !!}
 	</div>
 		
-{!! Form::close() !!}

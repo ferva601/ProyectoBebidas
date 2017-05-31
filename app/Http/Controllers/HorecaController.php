@@ -63,12 +63,16 @@ class HorecaController extends Controller
         $horeca->user_id = Auth::user()->id;
         $horeca->save();
 
+         if ($request->who == 'U'){
+             return redirect()->action('UsuarioController@index'); 
+        }elseif ($request->who == 'H'){
+            return redirect()->action('HorecaController@index');
+        }
+
         /*$telefono = new Telefono_Horeca();
         $telefono->telefono = $request->telefono;
         $telefono->horeca()->associate($horeca);
         $telefono->save();*/
-
-        return redirect()->action('HorecaController@index');
     }
 
     /**
@@ -79,7 +83,9 @@ class HorecaController extends Controller
      */
     public function show($id)
     {
-        //
+        $horeca = Horeca::find($id);
+        
+        return view('horeca.show')->with(compact('horeca'));
     }
 
     /**
