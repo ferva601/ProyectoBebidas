@@ -1,12 +1,12 @@
 @extends('plantillas.main')
 @section('content-left')
 
-<div class="container text-aline">
-	<div class="creditos">
+<div class="container">
+	<div id="creditos">
 		@foreach($credito as $credito)
-		<div class="credito panel-heading">
+		<div class="credito white-panel">
 			<h3>{{ $credito->plan }}</h3><hr>
-			<div class="credito-info">
+			<div class="credito-info panel">
 				<p>{{ $credito->cantidad_creditos }}</p>
 				<p>{{ $credito->descripcion }}</p>
 				<p>Precio: $${{ number_format($credito->precio) }}</p>
