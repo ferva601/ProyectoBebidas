@@ -1,5 +1,3 @@
-{!! Form::open(['route' => 'horeca.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-
 	{!! Form::hidden('saldo', '0') !!}
 
 	<div class="form-group">
@@ -124,6 +122,3 @@
 	<div class="form-group">
 		{!! Form::submit('Agregar Horeca', ['class' => 'btn btn-primary']) !!}
 	</div>
-
-		
-{!! Form::close() !!}

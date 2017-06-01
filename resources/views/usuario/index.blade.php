@@ -1,53 +1,94 @@
-@extends('plantillas.main')
-@section('title', 'Usuarios')
+@extends('plantillas.usuario.mainUsuario')
+@section('title', 'Usuario '.$user->name)
+
+@section('items')
+	<div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-aqua">
+            <div class="inner">
+				<h3>{{ $cont }}</h3>
+	        	<p>Productores</p>
+            </div>
+            <div class="icon">
+             	<i class="ion ion-bag"></i>
+            </div>
+            @if ($cont > 0) 
+            	<a href="{{  route('usuario.productores', $user->id ) }}" class="small-box-footer">Ver Mis Productores <i class="fa fa-arrow-circle-right"></i></a>
+            @else
+            	<a href="{{ route('usuario.registrar-productor') }}" class="small-box-footer">Registrar Productor <i class="fa fa-arrow-circle-right"></i></a>
+            @endif
+            
+        </div>
+    </div>
+      
+    <div class="col-lg-3 col-xs-6">
+       	<!-- small box -->
+        <div class="small-box bg-green">
+	        <div class="inner">
+	        	<h3>{{ $cont2 }}</h3>
+	        	<p>Importadores</p>
+	      	</div>
+	        <div class="icon">
+	          	<i class="ion ion-stats-bars"></i>
+	        </div>
+	         @if ($cont2 > 0) 
+            	<a href="{{ route('usuario.importadores', $user->id) }}" class="small-box-footer">Ver Mis Importadores <i class="fa fa-arrow-circle-right"></i></a>
+            @else
+            	<a href="{{ route('usuario.registrar-importador') }}" class="small-box-footer">Registrar Importador <i class="fa fa-arrow-circle-right"></i></a>
+            @endif
+	    </div>
+    </div>
+
+    <div class="col-lg-3 col-xs-6">
+	    <div class="small-box bg-yellow">
+	        <div class="inner">
+	           	<h3>{{ $cont3 }}</h3>
+	            <p>Distribuidores</p>
+	        </div>
+	        <div class="icon">
+	           	<i class="ion ion-person-add"></i>
+	        </div>
+             @if ($cont3 > 0) 
+            	<a href="{{ route('usuario.distribuidores', $user->id) }}" class="small-box-footer">Ver Mis Distribuidores <i class="fa fa-arrow-circle-right"></i></a>
+            @else
+            	<a href="{{ route('usuario.registrar-distribuidor') }}" class="small-box-footer">Registrar Distribuidor <i class="fa fa-arrow-circle-right"></i></a>
+            @endif
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-red">
+	        <div class="inner">
+	            <h3>{{ $cont4 }}</h3>
+	            <p>Horecas</p>
+	        </div>
+	        <div class="icon">
+	           	<i class="ion ion-pie-graph"></i>
+	        </div>
+	         @if ($cont4 > 0) 
+            	<a href="{{ route('usuario.horecas', $user->id) }}" class="small-box-footer">Ver Mis Horecas <i class="fa fa-arrow-circle-right"></i></a>
+            @else
+            	<a href="{{ route('usuario.registrar-horeca') }}" class="small-box-footer">Agregar Horeca <i class="fa fa-arrow-circle-right"></i></a>
+            @endif
+        </div>
+    </div>
+@endsection
+
 @section('content-left')
 
 	<div class="box">
 		<div class="box-header">
-			<h3 class="box-title">Listado de Usuarios</h3>
+			<h3 class="box-title">PANEL DE USUARIO</h3>
 
 			<div class="box-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                	<input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-                  	<div class="input-group-btn">
-                    	<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                  	</div>
-                </div>
+                
             </div>
 		</div>
 
 		<div class="box-body table-responsive no-padding">
-			<table class='table table-condensed table-hover'>
-				<thead>
-					<th><center>Username</center></th>
-					<th><center>Nombre</center></th>
-					<th><center>Apellido</center></th>
-					<th><center>Dirección</center></th>
-					<th><center>Código Postal </center></th>
-					<th></th>
-					<th></th>
-				</thead>
-				<tbody>
-					@foreach ($usuarios as $usuario)
-						<tr>
-							<td><center>{{ $usuario->name }}</td>
-							<td><center>{{ $usuario->nombre }}</td>
-							<td><center>{{ $usuario->apellido }}</td>
-							<td><center>{{ $usuario->direccion }}</td>
-							<td><center>{{ $usuario->codigo_postal }}</td>
-							<td><center> <a class="btn btn-primary" href="{{ route('usuario.edit', $usuario->id ) }}"><i class="fa fa-edit"></i></a></td>
-							<td><center> 
-								{!! Form::open(['route' => ['usuario.destroy', $usuario->id], 'method' => 'DELETE']) !!}
-									<button type="submit" class="btn btn-danger"><i class="fa fa-user-times"></i></button>
-								{!! Form::close() !!}
-							</td>
-						</tr>
-					@endforeach
-				</tbody>
-			</table>
+			
+			<center><h1>ESPACIO EN CONSTRUCCIÓN</h1>
 		</div>
 	</div>
 	
-	{!! $usuarios->render() !!}
 @endsection
-

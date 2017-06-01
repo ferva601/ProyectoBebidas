@@ -17,63 +17,65 @@
 
 	<body class="hold-transition skin-blue sidebar-mini">
 		<div class="wrapper">
-			<header class="main-header">
+
+  			<header class="main-header">
 			    <!-- Logo -->
 			    <a href="index2.html" class="logo">
-			      <!-- mini logo for sidebar mini 50x50 pixels -->
-			      <span class="logo-mini"><b>T</b>D</span>
-			      <!-- logo for regular state and mobile devices -->
-			      <span class="logo-lg"><b>Too</b>Drinks</span>
+			    	<!-- mini logo for sidebar mini 50x50 pixels -->
+			      	<span class="logo-mini"><b>t</b>d</span>
+			      	<!-- logo for regular state and mobile devices -->
+			      	<span class="logo-lg"><b>Too</b>Drinks</span>
 			    </a>
-			    <!-- NAVBAR SUPERIOR -->
-			    @include('plantillas/partes/navbar')
-			    <!-- /.NAVBAR SUPERIOR -->    
-		  	</header>
 
-  			<aside class="main-sidebar">
-			    <!-- SIDEBAR -->
-			    <section class="sidebar">
-			    	@include('plantillas/partes/sidebar')
-			    </section>
-		    	<!-- /.SIDEBAR -->
-		  	</aside>
+			    @include('plantillas.partes.navbar')
 
-   			<div class="content-wrapper">
-		    	<!-- CABECERA DEL CONTENIDO -->
-		        <section class="content-header">
-		      		@yield('header-content')
-		        </section>
-		        <!-- /.CABECERA DEL CONTENIDO -->
+  			</header>
+ 			
+ 			<!-- Left side column. contains the logo and sidebar -->
+ 			 <aside class="main-sidebar">
+    			<!-- sidebar: style can be found in sidebar.less -->
+    			<section class="sidebar">
+      				@include('plantillas.partes.sidebar')
+    			</section>
+    			<!-- /.sidebar -->
+  			</aside>
 
-    			<!-- SECCIÓN PRINCIPAL -->
-      			<section class="content">
-         			<div class="row">
-			           <!-- COLUMNA DE LA IZQUIERDA -->
-			           <section class="col-lg-8 connectedSortable">
-			               @yield('content-left')
-			           </section>
-			           <!-- /.COLUMNA DE LA IZQUIERDA -->
+  			<!-- Content Wrapper. Contains page content -->
+  			<div class="content-wrapper">
+    			<!-- Content Header (Page header) -->
+    			<section class="content-header">
+      				<h1>Dashboard<small>Control panel</small></h1>
+    			</section>
 
-			           <!-- COLUMNA DE LA DERECHA-->
-			           <section class="col-lg-4 connectedSortable">
-							@include('plantillas/partes/content-right')
-			           </section>
-			           <!-- /.COLUMNA DE LA DERECHA -->
-         			</div>
-      			</section>
-    			<!-- /.SECCIÓN PRINCIPAL -->
-    		</div>
-
-  			<!-- FOOTER -->
-   			<footer class="main-footer">
-      			<div class="pull-right hidden-xs">
-		        	<b>Version</b> 2.3.8
-		       	</div>
-		       	<strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
-		       reserved.
-		    </footer>
-		    <!-- /.FOOTER -->
-		</div>
+    			<!-- Main content -->
+    			<section class="content">
+      				<!-- Small boxes (Stat box) -->
+      				<div class="row">
+                		@yield('items')	
+     				</div>
+    
+      				<!-- Main row -->
+      				<div class="row">
+        				<!-- Left col -->
+        				<section class="col-lg-7 connectedSortable">
+				         	@yield('content-left')
+				        </section>
+        				<!-- /.Left col -->
+        				
+        				<!-- right col (We are only adding the ID to make the widgets sortable)-->
+        				<section class="col-lg-5 connectedSortable">
+							@include('plantillas.partes.content-right')
+        				</section>
+        				<!-- right col -->
+      				</div>
+      				<!-- /.row (main row) -->
+    			</section>
+    			<!-- /.content -->
+  			</div>
+  			<!-- /.content-wrapper -->
+  		
+  			
+	    </div>
      
 	    {!! Html::script('bootstrap/js/jquery-3.2.1.min.js') !!}
 	    {!! Html::script('bootstrap/js/bootstrap.min.js') !!}}

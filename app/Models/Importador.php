@@ -27,23 +27,19 @@ class Importador extends Model
     }
 
     public function productores(){
-        return $this->belongsToMany('App\Models\Productor', 'Productor_Importador');
+        return $this->belongsToMany('App\Models\Productor', 'productor_importador');
     }
 
      public function distribuidores(){
-        return $this->belongsToMany('App\Models\Distribuidor', 'Importador_Distribuidor');
+        return $this->belongsToMany('App\Models\Distribuidor', 'importador_distribuidor');
     }
 
      public function marcas(){
-        return $this->belongsToMany('App\Models\Marca', 'Importador_Marca');
+        return $this->belongsToMany('App\Models\Marca', 'importador_marca');
     }
 
     public function ofertas(){
     	return $this->hasMany('App\Models\Oferta');
-    }
-
-    public function demandas_productos(){
-    	return $this->hasMany('App\Models\Demanda_Producto');
     }
 
     public function creditos(){

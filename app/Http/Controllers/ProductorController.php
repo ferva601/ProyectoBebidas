@@ -8,6 +8,8 @@ use App\Models\Pais;
 use App\Models\Telefono_Productor;
 use DB;
 use Auth;
+use Session;
+use Redirect;
 
 class ProductorController extends Controller
 {
@@ -49,17 +51,38 @@ class ProductorController extends Controller
         $productor->user_id = Auth::user()->id;
         $productor->save();
 
-        return redirect()->action('ProductorController@index');  
+        if ($request->who == 'U'){
+             return redirect()->action('UsuarioController@index'); 
+        }elseif ($request->who == 'P'){
+            return redirect()->action('ProductorController@index');
+        }
     }
 
     public function show($id)
     {
-        //
+        $productor = Productor::find($id);
+        $cont=0;
+        $cont2=0;
+        $cont3=0;
+        $cont4=0;
+
+        foreach($productor->marcas as $marca)
+            $cont++;
+        foreach($productor->importadores as $importador)
+            $cont2++;
+        foreach($productor->distribuidores as $distribuidor)
+            $cont3++;
+        foreach($productor->demandas_importadores as $demandaImportador)
+            $cont4++;
+        foreach($productor->demandas_distribuidores as $demandasDistribuidor)
+            $cont4++;
+
+        return view('productor.show')->with(compact('productor', 'cont', 'cont2', 'cont3', 'cont4'));
     }
 
     public function edit($id)
     {
-        $productor = Productor::find($id);
+       $productor = Productor::find($id);
        
         $paises = DB::table('pais')
                         ->orderBy('pais')
@@ -72,6 +95,11 @@ class ProductorController extends Controller
                         ->get();
 
        return view('productor.edit')->with(compact('productor','paises', 'provincias'));
+
+        /*$productor = Productor::find($id);
+        return response()->json(
+            $productor->toArray()
+        );*/
     }
 
     public function update(Request $request, $id)
@@ -79,7 +107,13 @@ class ProductorController extends Controller
         $productor = Productor::find($id);
         $productor->fill($request->all());
         $productor->save();
+
+        //Session::flash('message','Your message');
+        //return Redirect::to('/usuario/mis-productores');
         
+        /*response()->json([
+            "mensaje" => "Listo"
+        ]);*/
         return redirect()->action('ProductorController@index');
     }
 

@@ -59,7 +59,12 @@ class DistribuidorController extends Controller
         $distribuidor->logo = $nombre;
         $distribuidor->user_id = Auth::user()->id;
         $distribuidor->save();
-        return redirect()->action('DistribuidorController@index');
+
+         if ($request->who == 'U'){
+             return redirect()->action('UsuarioController@index'); 
+        }elseif ($request->who == 'D'){
+            return redirect()->action('DistribuidorController@index');
+        }
     }
 
     /**
@@ -70,7 +75,25 @@ class DistribuidorController extends Controller
      */
     public function show($id)
     {
-        //
+        $distribuidor = Distribuidor::find($id);
+        $cont=0;
+        $cont2=0;
+
+        foreach($distribuidor->marcas as $marca)
+            $cont++;
+
+        $ofertas = DB::table('oferta')
+                        ->orderBy('titulo')
+                        ->select('id')
+                        ->where([
+                            ['tipo_creador', 'D'],
+                            ['creador_id', $id],
+                        ])->get();
+
+        foreach($ofertas as $oferta)
+            $cont2++;
+
+        return view('distribuidor.show')->with(compact('distribuidor', 'cont', 'cont2'));
     }
 
     /**

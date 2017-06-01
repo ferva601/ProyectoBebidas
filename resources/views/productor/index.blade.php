@@ -24,6 +24,7 @@
 					<th><center>Email</th>
 					<th></th>
 					<th></th>
+					<th></th>
 				</thead>
 				<tbody>
 					@foreach ($productores as $productor)
@@ -33,6 +34,7 @@
 							<td><center>{{ $productor->descripcion }}</td>
 							<td><center>{{ $productor->email }}</td>
 							<td><center> <a class="btn btn-primary" href="{{ route('productor.edit', $productor->id ) }}"><i class="fa fa-edit"></a></td>
+							<td><a class="btn btn-success" href="{{ route('productor.show', $productor->id) }}"><i class="fa fa-arrow-circle-right"></a></td>
 							<td><center> 
 								{!! Form::open(['route' => ['productor.destroy', $productor->id], 'method' => 'DELETE']) !!}
 									<button type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
@@ -45,4 +47,5 @@
 		</div>
 	</div>
 	{!! $productores->render() !!}
+
 @endsection
