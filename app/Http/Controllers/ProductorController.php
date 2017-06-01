@@ -8,6 +8,8 @@ use App\Models\Pais;
 use App\Models\Telefono_Productor;
 use DB;
 use Auth;
+use Session;
+use Redirect;
 
 class ProductorController extends Controller
 {
@@ -80,7 +82,7 @@ class ProductorController extends Controller
 
     public function edit($id)
     {
-        $productor = Productor::find($id);
+       $productor = Productor::find($id);
        
         $paises = DB::table('pais')
                         ->orderBy('pais')
@@ -93,6 +95,11 @@ class ProductorController extends Controller
                         ->get();
 
        return view('productor.edit')->with(compact('productor','paises', 'provincias'));
+
+        /*$productor = Productor::find($id);
+        return response()->json(
+            $productor->toArray()
+        );*/
     }
 
     public function update(Request $request, $id)
@@ -100,7 +107,13 @@ class ProductorController extends Controller
         $productor = Productor::find($id);
         $productor->fill($request->all());
         $productor->save();
+
+        //Session::flash('message','Your message');
+        //return Redirect::to('/usuario/mis-productores');
         
+        /*response()->json([
+            "mensaje" => "Listo"
+        ]);*/
         return redirect()->action('ProductorController@index');
     }
 

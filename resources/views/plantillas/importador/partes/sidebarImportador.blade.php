@@ -1,10 +1,10 @@
 <div class="user-panel">
    <div class="pull-left image">
-      <img src="imagenes/usuarios/usuario-icono.jpg" class="img-circle" alt="User Image">
+      <img src="{{ asset('imagenes/importadores/')}}/{{ $importador->logo }}" class="img-circle" alt="User Image">
    </div>
    <div class="pull-left info">
       <p>{{ $importador->nombre }}</p>
-      <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+      <a href="#"><i class="fa fa-circle text-success"></i> Importador</a>
    </div>
 </div>
 <ul class="sidebar-menu">

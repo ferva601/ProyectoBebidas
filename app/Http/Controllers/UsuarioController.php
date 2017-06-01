@@ -141,9 +141,9 @@ class UsuarioController extends Controller
 
         $productores = DB::table('productor')
                         ->orderBy('nombre')
-                        ->select('id', 'nombre', 'telefono', 'email', 'saldo')
+                        ->select('id', 'nombre', 'telefono', 'email', 'saldo', 'logo', 'pais_id')
                         ->where('user_id', $id)
-                        ->paginate(8);
+                        ->paginate(4);
 
         return view('usuario.listados.productores')->with(compact('usuario', 'productores'));
     }
@@ -154,7 +154,7 @@ class UsuarioController extends Controller
 
         $importadores = DB::table('importador')
                         ->orderBy('nombre')
-                        ->select('id', 'nombre', 'telefono', 'email', 'saldo')
+                        ->select('id', 'nombre', 'telefono', 'email', 'saldo', 'logo', 'pais_id')
                         ->where('user_id', $id)
                         ->paginate(8);
 
@@ -167,7 +167,7 @@ class UsuarioController extends Controller
 
         $distribuidores = DB::table('distribuidor')
                         ->orderBy('nombre')
-                        ->select('id', 'nombre', 'telefono', 'email', 'saldo')
+                        ->select('id', 'nombre', 'telefono', 'email', 'saldo', 'logo', 'pais_id')
                         ->where('user_id', $id)
                         ->paginate(8);
 
@@ -180,7 +180,7 @@ class UsuarioController extends Controller
 
         $horecas = DB::table('horeca')
                         ->orderBy('nombre')
-                        ->select('id', 'nombre', 'telefono', 'email', 'saldo')
+                        ->select('id', 'nombre', 'telefono', 'email', 'saldo', 'logo', 'pais_id')
                         ->where('user_id', $id)
                         ->paginate(8);
 

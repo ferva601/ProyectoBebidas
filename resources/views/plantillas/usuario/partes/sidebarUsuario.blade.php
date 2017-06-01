@@ -1,10 +1,10 @@
 <div class="user-panel">
    <div class="pull-left image">
-      <img src="imagenes/usuarios/usuario-icono.jpg" class="img-circle" alt="User Image">
+      <img src="{{ asset('imagenes/usuarios/')}}/{{ Auth::user()->avatar }}" class="img-circle" alt="User Image">
    </div>
    <div class="pull-left info">
       <p>{{ Auth::user()->nombre }} {{ Auth::user()->apellido }}</p>
-      <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+      <a href="#"><i class="fa fa-circle text-success"></i> Usuario Propietario</a>
    </div>
 </div>
 <ul class="sidebar-menu">
