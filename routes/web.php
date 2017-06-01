@@ -38,7 +38,7 @@ Route::resource('producto','ProductoController');
 
 Route::resource('marca','MarcaController');
 
-
+Route::get('credito/compra','CreditoController@compra')->name('compra');
 
 Route::resource('credito','CreditoController');
 
