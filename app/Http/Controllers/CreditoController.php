@@ -37,7 +37,7 @@ class CreditoController extends Controller
     public function show($id)
     {
        $credito = Credito::all();
-        dd($credito);
+        //dd($credito);
         return view ('credito.show')->with(compact('credito'));
     }
 
