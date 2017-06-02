@@ -85,18 +85,11 @@ class CreditoController extends Controller
                         ->where('user_id', $idusuario)
                         ->paginate(10);
 
-        $entidades = array($productores, $distribuidores, $importador);
-        dd($entidades);
-        /*$idusuario = Auth::id(); 
-        $productores = DB::table('productor')
-                        ->orderBy('nombre')
-                        ->select('id', 'nombre', 'telefono', 'email', 'saldo', 'logo', 'pais_id')
-                        ->where('user_id', $idusuario)
-                        ->paginate(10);
-        //dd($productores);
+        
+        //$lista = array($productores, $distribuidores, $importador);
 
-        return view('listados.entidades')->with(compact('idusuario', 'productores'));
-        */
+        return view('credito.lista')->with(compact('lista'));
+        //dd($lista)
     }
 }
 
