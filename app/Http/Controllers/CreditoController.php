@@ -69,6 +69,25 @@ class CreditoController extends Controller
     public function compra()
     {   
         $idusuario = Auth::id(); 
+            $productores = DB::table('productor')
+                        ->orderBy('nombre')
+                        ->select('id', 'nombre', 'telefono', 'email', 'saldo', 'logo', 'pais_id')
+                        ->where('user_id', $idusuario)
+                        ->paginate(10);
+            $distribuidores = DB::table('distribuidor')
+                        ->orderBy('nombre')
+                        ->select('id', 'nombre', 'telefono', 'email', 'saldo', 'logo', 'pais_id')
+                        ->where('user_id', $idusuario)
+                        ->paginate(10);
+            $importador = DB::table('importador')
+                        ->orderBy('nombre')
+                        ->select('id', 'nombre', 'telefono', 'email', 'saldo', 'logo', 'pais_id')
+                        ->where('user_id', $idusuario)
+                        ->paginate(10);
+
+        $entidades = array($productores, $distribuidores, $importador);
+        dd($entidades);
+        /*$idusuario = Auth::id(); 
         $productores = DB::table('productor')
                         ->orderBy('nombre')
                         ->select('id', 'nombre', 'telefono', 'email', 'saldo', 'logo', 'pais_id')
@@ -76,8 +95,8 @@ class CreditoController extends Controller
                         ->paginate(10);
         //dd($productores);
 
-        return view('listados.usuario.productores')->with(compact('idusuario', 'productores'));
-
+        return view('listados.entidades')->with(compact('idusuario', 'productores'));
+        */
     }
 }
 
