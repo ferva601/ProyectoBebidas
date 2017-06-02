@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CreditoCreateRequest;
 use App\Http\Requests\CreditoUpdateRequest;
 use App\Models\Credito;
+use App\Models\Productor;
+use App\Models\Distribuidor;
+use App\Models\ Importador;
 use App\Models\User;
 use DB;
 
@@ -69,27 +72,44 @@ class CreditoController extends Controller
     public function compra()
     {   
         $idusuario = Auth::id(); 
-            $productores = DB::table('productor')
-                        ->orderBy('nombre')
+            $productores = Productor::orderBy('nombre')
                         ->select('id', 'nombre', 'telefono', 'email', 'saldo', 'logo', 'pais_id')
                         ->where('user_id', $idusuario)
                         ->paginate(10);
-            $distribuidores = DB::table('distribuidor')
-                        ->orderBy('nombre')
+            $distribuidores = Distribuidor::orderBy('nombre')
                         ->select('id', 'nombre', 'telefono', 'email', 'saldo', 'logo', 'pais_id')
                         ->where('user_id', $idusuario)
                         ->paginate(10);
-            $importador = DB::table('importador')
-                        ->orderBy('nombre')
+            $importadores = Importador::orderBy('nombre')
                         ->select('id', 'nombre', 'telefono', 'email', 'saldo', 'logo', 'pais_id')
                         ->where('user_id', $idusuario)
                         ->paginate(10);
 
+        //dd($importadores);
         
+        return view('credito.lista', compact('productores','distribuidores','importadores'));
         //$lista = array($productores, $distribuidores, $importador);
-
-        return view('credito.lista')->with(compact('lista'));
         //dd($lista)
     }
+
+    public function pago($id)
+    {   
+
+        if ($id_entidad == Productor::find($id)) {
+            $saldo = Productor::select('saldo');
+
+        } elseif ($id_entidad == Distribuidor::find($id)) {
+            $saldo = Distribuidor::select('saldo');
+
+        } elseif ($id_entidad == Importador::find($id)) {
+            $saldo = Importador::select('saldo');
+        }
+
+        $compra_saldo = $saldo;
+        return  view('credito.pago', compact('saldo'));
+
+    }
+
+
 }
 

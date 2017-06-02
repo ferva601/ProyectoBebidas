@@ -4,8 +4,9 @@
 	
 	<div class="container text-center">
 		<div class="page-header">
-			<h1><i class="fa fa-shopping"></i>Lista de Miembros</h1>
+			<h1><i class="fa fa-shopping"></i> Lista de Miembros</h1>
 		</div>
+
 		<div class="table-responsive">
 			<table class="table table-striped table-hover table-bordered">
 				<thead>
@@ -20,18 +21,18 @@
 					</tr>
 				</thead>
 					<tbody>
-						@foreach($lista as $productores)
+						@foreach ($produtores as $productor)
 							<tr>
-								<td>{{ $lista->id }}</td>
-								<td>{{ $lista->Nombre }}</td>
-								<td>{{ $lista->Telefono }}</td>
-								<td>{{ $lista->email }}</td>
-								<td>{{ number_format($lista->saldo) }}</td>
-								<td>< img src="{{ $lista->logo }}></td>
-								<td>{{ $lista->pais }}</td>
+								<td>{{ $produtor->id }}</td>
+								<td>{{ $produtor->Nombre }}</td>
+								<td>{{ $produtor->Telefono }}</td>
+								<td>{{ $produtor->email }}</td>
+								<td>{{ number_format($produtor->saldo) }}</td>
+								<td>< img src="{{ $produtor->logo }}></td>
+								<td>{{ $produtor->pais }}</td>
 								<td>
-									<a href="#" class="btn btn-circle">
-										
+									<a href="#" class="btn bt-warnig">
+										<i class="btn bt-warnig">siguiente</i>
 									</a>
 								</td>	
 							</tr>
@@ -41,13 +42,6 @@
 			</table>
 		</div>
 
-
-
-
 	</div>
 
 @stop
-
-
-
-///'id', 'nombre', 'telefono', 'email', 'saldo', 'logo', 'pais_id'
